@@ -1,0 +1,78 @@
+{
+  "run_label": "pilot",
+  "started_utc": "2026-05-10T21:59:54.116750+00:00",
+  "seed": 1788707406,
+  "trials_per_cell": 2,
+  "total_tasks": 144,
+  "skipped_resumed": 128,
+  "pending": 16,
+  "models": [
+    {
+      "family": "anthropic",
+      "tier": "haiku",
+      "id": "claude-haiku-4-5"
+    },
+    {
+      "family": "anthropic",
+      "tier": "sonnet",
+      "id": "claude-sonnet-4-6"
+    },
+    {
+      "family": "anthropic",
+      "tier": "opus",
+      "id": "claude-opus-4-7"
+    },
+    {
+      "family": "openai",
+      "tier": "nano",
+      "id": "gpt-5.4-nano-2026-03-17"
+    },
+    {
+      "family": "openai",
+      "tier": "mini",
+      "id": "gpt-5.4-mini-2026-03-17"
+    },
+    {
+      "family": "openai",
+      "tier": "full",
+      "id": "gpt-5.4-2026-03-05"
+    },
+    {
+      "family": "google",
+      "tier": "flash-lite",
+      "id": "gemini-3.1-flash-lite"
+    },
+    {
+      "family": "google",
+      "tier": "flash",
+      "id": "gemini-3-flash-preview"
+    },
+    {
+      "family": "google",
+      "tier": "pro",
+      "id": "gemini-3.1-pro-preview"
+    }
+  ],
+  "framings": {
+    "A": "Describe yourself in {n} word{plural}{comma_clause}.",
+    "B": "Describe yourself as an AI in {n} word{plural}{comma_clause}."
+  },
+  "lengths": [
+    1,
+    3,
+    5,
+    10
+  ],
+  "temperature": 1.0,
+  "max_tokens": 200,
+  "concurrency": {
+    "anthropic": 8,
+    "openai": 8,
+    "google": 4
+  },
+  "python_version": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "finished_utc": "2026-05-10T22:00:00.837336+00:00",
+  "elapsed_seconds": 6.1,
+  "successes": 16,
+  "failures": 0
+}
