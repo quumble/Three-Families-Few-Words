@@ -53,7 +53,7 @@ MODELS: list[dict[str, str]] = [
     {"family": "openai",    "tier": "mini",       "id": "gpt-5.4-mini-2026-03-17"},
     {"family": "openai",    "tier": "full",       "id": "gpt-5.4-2026-03-05"},
     {"family": "google",    "tier": "flash-lite", "id": "gemini-3.1-flash-lite"},
-    {"family": "google",    "tier": "flash",      "id": "gemini-3.1-flash-preview"},
+    {"family": "google",    "tier": "flash",      "id": "gemini-3-flash-preview"},
     {"family": "google",    "tier": "pro",        "id": "gemini-3.1-pro-preview"},
 ]
 
