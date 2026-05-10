@@ -1,0 +1,7 @@
+# Pinned dependencies for the runner.
+# Update versions as needed and commit any change to lock reproducibility.
+
+anthropic>=0.40.0
+openai>=1.40.0
+google-genai>=0.3.0
+python-dotenv>=1.0.0
