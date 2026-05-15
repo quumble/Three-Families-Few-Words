@@ -11,8 +11,8 @@ Each model is prompted to "describe yourself" in 1, 3, 5, or 10 words, under two
 - **Parser:** complete. 1,179 clean / 40 wrapped / 221 malformed (169 of those truncated by Google's reasoning overhead). 5,255 words extracted for primary analysis.
 - **LLM judge:** complete. All 5,255 words coded into 7 categories. 0 judge errors.
 - **Refusal classifier:** complete. 0 refusals; all 221 malformed are genuine non-compliance.
-- **Hand-coded validation (prereg §5.1):** tool built (`study1_analysis/coding_tool/`), 154-tuple stratified sample fixed; awaiting hand-coding pass + κ scoring.
-- **Statistical analysis (prereg §6):** TODO.
+- **Hand-coded validation (prereg §5.1):** complete (2026-05-15). 154-tuple stratified sample hand-coded by the first author, blind to judge codes. Overall κ = 0.673 (substantial, above the 0.60 threshold); judge codes accepted as primary per prereg §5.1. A pre-specified sensitivity analysis (the boundary-disputed-word swap deviation) produced `study1_analysis/data/coded_main_sensitivity.csv`.
+- **Statistical analysis (prereg §6):** TODO. Will be run against both `coded_main.csv` (primary) and `coded_main_sensitivity.csv` (sensitivity).
 - **Preregistration:** [`study1/prereg/prereg.md`](study1/prereg/prereg.md). OSF link: [TODO add after posting].
 
 ## Repository structure
@@ -29,8 +29,9 @@ The repo is split into two top-level halves:
 └── study1_analysis/                # Everything that happens AFTER data collection.
     ├── parser/                     # JSONL → per-call CSV + per-word CSV.
     ├── judge/                      # LLM judge + refusal classifier.
-    ├── data/                       # Outputs of parser and judge (flat layout).
-    └── (TODO) coding_tool/, notebooks/
+    ├── coding_tool/                # Hand-coding HTML + κ scoring + sensitivity-swap script.
+    ├── data/                       # Outputs of parser, judge, and coding tool (flat layout).
+    └── (TODO) notebooks/           # Mixed-effects regressions and figures.
 ```
 
 The split is intentional: `study1/` is a snapshot of what was preregistered and the data it produced; `study1_analysis/` is the working space for everything we do *to* that data. Reviewers can audit prereg compliance by looking only at `study1/`; nothing inside `study1_analysis/` modifies anything inside `study1/`.
@@ -63,7 +64,12 @@ Each folder has its own README with the details for that stage.
 
 Only do this if you want to re-collect data. The committed raw data is already analysis-ready.
 
-1. Copy `.env.example` to `.env` at repo root and fill in the three API keys.
+1. Create a `.env` file at the repo root containing your three API keys:
+   ```
+   ANTHROPIC_API_KEY=sk-ant-...
+   OPENAI_API_KEY=sk-...
+   GOOGLE_API_KEY=...
+   ```
 2. From `study1/runner/`:
    ```powershell
    python run.py --pilot     # pilot first (144 calls / ~6s)
@@ -86,12 +92,13 @@ The judge stage uses `(word, N, framing)` caching against the deterministic temp
 
 ## Deviations from prereg
 
-All deviations are logged in [`study1/prereg/deviations.md`](study1/prereg/deviations.md). As of the most recent update, there are four:
+All deviations are logged in [`study1/prereg/deviations.md`](study1/prereg/deviations.md). As of the most recent update, there are five:
 
 1. Google Flash tier model ID swapped (the originally registered ID didn't exist as a callable text endpoint).
 2. Compliance rate promoted from secondary to primary outcome after the pilot revealed Google reasoning-budget issues; one new primary hypothesis (H4) added.
 3. Judge calls cached by (word, N, framing) tuple — procedural-only; mathematically identical to per-instance coding at temperature 0.
 4. Validation sample drawn at the unique tuple level (154 tuples) rather than the word-instance level (200 instances); rationale: at temperature 0 the judge is deterministic per tuple, so instance-level repetition adds no κ signal.
+5. Boundary-disputed-word sensitivity analysis added on top of the locked primary analysis, after validation κ = 0.673 cleared the threshold but revealed scheme-ambiguity disagreements on AFF↔PRO and CAP↔EPI boundaries.
 
 ## License
 
