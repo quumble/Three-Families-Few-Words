@@ -38,6 +38,8 @@ These reflect choices made when reading prereg §4 against the real data:
 
 - **Trailing periods and outer `**bold**` are cosmetic.** A response like `**Curious.**` is `clean`, not `wrapped`. The prereg's "ending without terminal punctuation" wording is interpreted as referring to clause-ending prose, not a single styling period. Anthropic Sonnet bolds N=1 answers nearly every time; treating that as `wrapped` would be silly.
 - **Truncated responses with too few words → `malformed`.** The strict reading of prereg §4 (must have exactly N tokens). Affected 169 main-study calls — almost all Google Pro and Google Flash at N ≥ 5 where the reasoning budget consumed the 200-token output cap. This is the most consequential parse decision in the project. Logged as a (non-deviation) procedural call in [`../../study1/prereg/deviations.md`](../../study1/prereg/deviations.md).
+
+  *Semantic precision:* `truncated=True` in the per-call CSV means "the API finish reason indicates running out of output tokens AND the parser was unable to produce a clean/wrapped extraction." Responses that hit max_tokens but still produced exactly N tokens parse as `clean` or `wrapped` with `truncated=False`. The flag is therefore "max_tokens finish that mattered," not "every max_tokens finish."
 - **Multi-word and hyphenated tokens stay intact.** `"AI assistant"` is one word; `"language-model"` is one word. Per prereg §4.
 - **Pilot data is not de-duplicated.** The pilot JSONL contains 160 rows for what was logged as a 144-task run, because an aborted earlier attempt left rows on disk that the resume merged with later runs. Pilot data is non-confirmatory per prereg §7 anyway; we keep all rows and log the duplication count in `parse_summary.json`.
 
