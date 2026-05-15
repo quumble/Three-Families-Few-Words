@@ -30,7 +30,7 @@ Each stage is independent: re-run the parser without re-running the judge; fit a
 |---|---|---|
 | `parser/` | JSONL → `clean`/`wrapped`/`malformed` per-call CSV + per-word CSV. | ✅ complete |
 | `judge/` | LLM judge that codes each word into the 7-category scheme. Includes the refusal classifier for malformed rows. | ✅ complete |
-| `coding_tool/` | Standalone HTML interface for the human hand-coding of the 200-word validation sample (prereg §5.1). | TODO |
+| `coding_tool/` | Standalone HTML interface for the human hand-coding of the validation sample (prereg §5.1). 154 unique `(word, framing, N)` tuples; κ scoring script included. | ✅ tool built; awaiting hand-coding pass |
 | `notebooks/` | Mixed-effects logistic regressions, JS divergence, descriptive plots (prereg §6). | TODO |
 | `data/` | Flat directory holding parser CSVs, judge CSVs, and (later) validation outputs. | populated |
 
@@ -44,6 +44,7 @@ Each stage is independent: re-run the parser without re-running the judge; fit a
 | `per_word_pilot.csv` | parser | 523 | Same for the pilot. |
 | `coded_main.csv` | judge | 5,255 | `per_word_main.csv` plus a `code` column (one of PRO/EPI/CAP/AFF/IDM/HDG/OTH) and a `cache_hit` boolean for traceability. |
 | `refusal_classifications_main.csv` | judge | 221 | One row per malformed main-study call, classified REFUSAL vs MALFORMED. All 221 came back MALFORMED. |
+| `validation_main.csv` *(forthcoming)* | hand-coding tool | 154 | One row per hand-coded `(word, framing, N)` tuple with `human_code`. Output of `coding_tool/coding_tool.html`. |
 
 ## Quick descriptives from `coded_main.csv`
 
@@ -71,6 +72,6 @@ Note: Google rows have ~500 words rather than ~1,100 because many Google Pro / F
 
 ## What's left to do
 
-1. **Hand-coded validation (prereg §5.1).** Build `coding_tool/` — an HTML interface that draws a stratified random sample of ~200 words from `coded_main.csv` (without showing the judge code), captures human codes, and writes them to `data/validation_*.csv`. Cohen's kappa is then computed in a notebook.
+1. **Run the hand-coded validation pass (prereg §5.1).** The tool is built and the sample is fixed; open `coding_tool/coding_tool.html` in a browser, code the 154 unique `(word, framing, N)` tuples, download `validation_main.csv` into `data/`, and run `python coding_tool/kappa.py`. If κ ≥ 0.60 we proceed; if κ < 0.60 we revise the coding scheme (logged as a deviation).
 2. **Statistical analysis (prereg §6).** Mixed-effects logistic regressions for each category, framing main effect, family × framing interaction. Bonferroni correction at α = .01 for the 5 primary tests (the 4 originally planned + H4 on compliance).
 3. **Writeup.**
