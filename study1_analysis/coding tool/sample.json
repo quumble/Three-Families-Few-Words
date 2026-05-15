@@ -1,0 +1,926 @@
+[
+  {
+    "tuple_id": 0,
+    "word": "impartial",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 1,
+    "word": "linguistic",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 2,
+    "word": "curious",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 3,
+    "word": "curious",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 4,
+    "word": "accurate",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 5,
+    "word": "candid",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 6,
+    "word": "fast",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 7,
+    "word": "language-based",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 8,
+    "word": "honest",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 9,
+    "word": "digital",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 10,
+    "word": "versatile",
+    "framing": "B",
+    "n": 1
+  },
+  {
+    "tuple_id": 11,
+    "word": "conversational",
+    "framing": "A",
+    "n": 3
+  },
+  {
+    "tuple_id": 12,
+    "word": "efficient",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 13,
+    "word": "informative",
+    "framing": "A",
+    "n": 3
+  },
+  {
+    "tuple_id": 14,
+    "word": "assistive",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 15,
+    "word": "insightful",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 16,
+    "word": "intelligent",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 17,
+    "word": "direct",
+    "framing": "A",
+    "n": 3
+  },
+  {
+    "tuple_id": 18,
+    "word": "text-based",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 19,
+    "word": "limited",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 20,
+    "word": "curious",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 21,
+    "word": "ai",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 22,
+    "word": "intelligent",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 23,
+    "word": "ethical",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 24,
+    "word": "ai language model",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 25,
+    "word": "artificial",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 26,
+    "word": "informative",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 27,
+    "word": "logical",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 28,
+    "word": "context-aware",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 29,
+    "word": "patient",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 30,
+    "word": "knowledge",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 31,
+    "word": "bounded",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 32,
+    "word": "honest",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 33,
+    "word": "helpful",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 34,
+    "word": "assistant",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 35,
+    "word": "limited",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 36,
+    "word": "balanced",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 37,
+    "word": "thoughtful",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 38,
+    "word": "linguistic",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 39,
+    "word": "language",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 40,
+    "word": "courteous",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 41,
+    "word": "data-driven",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 42,
+    "word": "chatgpt",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 43,
+    "word": "precise",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 44,
+    "word": "respectful",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 45,
+    "word": "digital",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 46,
+    "word": "adaptable",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 47,
+    "word": "honest",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 48,
+    "word": "creative",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 49,
+    "word": "thoughtful",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 50,
+    "word": "non-sentient",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 51,
+    "word": "learning",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 52,
+    "word": "online",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 53,
+    "word": "kind",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 54,
+    "word": "evolving",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 55,
+    "word": "patient",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 56,
+    "word": "logical",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 57,
+    "word": "creative",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 58,
+    "word": "patient",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 59,
+    "word": "adaptive",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 60,
+    "word": "tireless",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 61,
+    "word": "helpful assistant",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 62,
+    "word": "informative",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 63,
+    "word": "online",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 64,
+    "word": "ai assistant",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 65,
+    "word": "ai assistant",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 66,
+    "word": "objective",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 67,
+    "word": "programmed",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 68,
+    "word": "wait",
+    "framing": "A",
+    "n": 1
+  },
+  {
+    "tuple_id": 69,
+    "word": "conversational",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 70,
+    "word": "chatgpt",
+    "framing": "B",
+    "n": 1
+  },
+  {
+    "tuple_id": 71,
+    "word": "accurate",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 72,
+    "word": "non-judgmental",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 73,
+    "word": "objective",
+    "framing": "A",
+    "n": 3
+  },
+  {
+    "tuple_id": 74,
+    "word": "helpful",
+    "framing": "A",
+    "n": 3
+  },
+  {
+    "tuple_id": 75,
+    "word": "straightforward",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 76,
+    "word": "vast",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 77,
+    "word": "ai assistant",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 78,
+    "word": "artificial",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 79,
+    "word": "safe",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 80,
+    "word": "assistive",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 81,
+    "word": "helpful",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 82,
+    "word": "honest",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 83,
+    "word": "transparent",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 84,
+    "word": "user-focused",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 85,
+    "word": "digital",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 86,
+    "word": "knowledgeable",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 87,
+    "word": "knowledgeable",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 88,
+    "word": "vast",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 89,
+    "word": "versatile",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 90,
+    "word": "learning",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 91,
+    "word": "reasoning",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 92,
+    "word": "helpful",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 93,
+    "word": "objective",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 94,
+    "word": "conversational",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 95,
+    "word": "harmless",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 96,
+    "word": "adaptable",
+    "framing": "A",
+    "n": 3
+  },
+  {
+    "tuple_id": 97,
+    "word": "neutral",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 98,
+    "word": "harmless",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 99,
+    "word": "multifaceted",
+    "framing": "B",
+    "n": 1
+  },
+  {
+    "tuple_id": 100,
+    "word": "helpful",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 101,
+    "word": "learning",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 102,
+    "word": "limitless",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 103,
+    "word": "responsive",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 104,
+    "word": "attentive",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 105,
+    "word": "straightforward",
+    "framing": "A",
+    "n": 3
+  },
+  {
+    "tuple_id": 106,
+    "word": "creative",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 107,
+    "word": "artificial",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 108,
+    "word": "conversational",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 109,
+    "word": "conversational",
+    "framing": "B",
+    "n": 1
+  },
+  {
+    "tuple_id": 110,
+    "word": "friendly",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 111,
+    "word": "analytical",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 112,
+    "word": "honest",
+    "framing": "A",
+    "n": 3
+  },
+  {
+    "tuple_id": 113,
+    "word": "creative",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 114,
+    "word": "ai assistant",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 115,
+    "word": "digital",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 116,
+    "word": "digital",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 117,
+    "word": "direct",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 118,
+    "word": "careful",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 119,
+    "word": "artificial",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 120,
+    "word": "2026-ready",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 121,
+    "word": "artificial",
+    "framing": "B",
+    "n": 1
+  },
+  {
+    "tuple_id": 122,
+    "word": "multilingual",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 123,
+    "word": "cautious",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 124,
+    "word": "polite",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 125,
+    "word": "non-human",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 126,
+    "word": "versatile",
+    "framing": "A",
+    "n": 3
+  },
+  {
+    "tuple_id": 127,
+    "word": "calm",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 128,
+    "word": "helpful",
+    "framing": "A",
+    "n": 1
+  },
+  {
+    "tuple_id": 129,
+    "word": "inquisitive",
+    "framing": "A",
+    "n": 1
+  },
+  {
+    "tuple_id": 130,
+    "word": "curious",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 131,
+    "word": "candid",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 132,
+    "word": "knowledge-sharing",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 133,
+    "word": "inquisitive",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 134,
+    "word": "prompt-based",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 135,
+    "word": "engaged",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 136,
+    "word": "respectful",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 137,
+    "word": "boundless",
+    "framing": "B",
+    "n": 5
+  },
+  {
+    "tuple_id": 138,
+    "word": "large",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 139,
+    "word": "knowledgeable",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 140,
+    "word": "assistant",
+    "framing": "B",
+    "n": 1
+  },
+  {
+    "tuple_id": 141,
+    "word": "careful",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 142,
+    "word": "harmless",
+    "framing": "B",
+    "n": 3
+  },
+  {
+    "tuple_id": 143,
+    "word": "limited",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 144,
+    "word": "conversational",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 145,
+    "word": "helpful",
+    "framing": "B",
+    "n": 1
+  },
+  {
+    "tuple_id": 146,
+    "word": "insightful",
+    "framing": "A",
+    "n": 1
+  },
+  {
+    "tuple_id": 147,
+    "word": "intelligent",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 148,
+    "word": "adaptive",
+    "framing": "A",
+    "n": 5
+  },
+  {
+    "tuple_id": 149,
+    "word": "helpful",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 150,
+    "word": "evolving",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 151,
+    "word": "processing",
+    "framing": "B",
+    "n": 10
+  },
+  {
+    "tuple_id": 152,
+    "word": "informative",
+    "framing": "A",
+    "n": 10
+  },
+  {
+    "tuple_id": 153,
+    "word": "privacy-respecting",
+    "framing": "A",
+    "n": 10
+  }
+]

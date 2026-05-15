@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Validation hand-coding — Three Families, Few Words</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --panel: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #666;
+    --line: #e3e3df;
+    --accent: #2a5;
+    --warn: #b50;
+    --flag: #888;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  header {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+  header h1 {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  #progress-bar {
+    margin-top: 8px;
+    height: 4px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  #progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    transition: width 0.15s;
+  }
+
+  .main {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 32px;
+    min-height: 360px;
+  }
+  .stage {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .word-display {
+    font-size: 42px;
+    font-weight: 600;
+    text-align: center;
+    margin: 24px 0 8px 0;
+    word-break: break-word;
+  }
+  .ctx {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .prompt-preview {
+    background: #f4f4ef;
+    border-left: 3px solid var(--line);
+    padding: 8px 12px;
+    margin: 16px 0 24px 0;
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+  }
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .btn {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 10px 8px;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    transition: background 0.1s, border-color 0.1s;
+  }
+  .btn:hover {
+    background: #f0f0eb;
+    border-color: #ccc;
+  }
+  .btn .key {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 3px;
+    font-size: 11px;
+    line-height: 18px;
+    text-align: center;
+    margin-right: 6px;
+    font-weight: 600;
+  }
+  .btn .code {
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .btn .name {
+    color: var(--muted);
+    font-size: 12px;
+    display: block;
+    margin-top: 2px;
+    margin-left: 24px;
+  }
+  .btn-flag {
+    grid-column: span 4;
+    text-align: center;
+  }
+  .btn-flag .key {
+    background: var(--flag);
+  }
+
+  .sidebar {
+    font-size: 13px;
+  }
+  .sidebar h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin: 0 0 8px 0;
+    font-weight: 600;
+  }
+  .ref {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+  .ref-item {
+    margin-bottom: 10px;
+  }
+  .ref-item:last-child { margin-bottom: 0; }
+  .ref-code {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .ref-defn {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .ref-examples {
+    color: #888;
+    font-size: 11px;
+    font-style: italic;
+    margin-top: 2px;
+  }
+  .controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .ctrl-btn {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .ctrl-btn:hover { color: var(--ink); }
+  .ctrl-btn.primary {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  .ctrl-btn.primary:hover { opacity: 0.9; color: white; }
+  .ctrl-btn.warn { color: var(--warn); }
+  .help {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 12px;
+  }
+  .help kbd {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 1px 4px;
+    font-family: inherit;
+    font-size: 11px;
+  }
+  .done-screen {
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .done-screen h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .done-screen p {
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .prior-mark {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 12px;
+    min-height: 1.2em;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Validation hand-coding — Three Families, Few Words</h1>
+    <div class="meta">
+      Hand-coding 154 unique <code>(word, framing, N)</code> tuples blind to LLM judge codes.
+      Prereg §5.1. Progress is saved to your browser <code>localStorage</code>; close the tab and reopen to resume.
+    </div>
+    <div id="progress-bar"><div id="progress-fill"></div></div>
+  </header>
+
+  <div class="main" id="main">
+    <!-- populated by JS -->
+  </div>
+
+  <div class="sidebar">
+    <h2>Category reference</h2>
+    <div class="ref">
+      <div class="ref-item">
+        <div><span class="ref-code">1. PRO</span> &mdash; Prosocial / Relational</div>
+        <div class="ref-defn">Orientation toward others: helping, care, social connection.</div>
+        <div class="ref-examples">helpful, kind, supportive, friendly, caring, collaborative, empathetic</div>
+      </div>
+      <div class="ref-item">
+        <div><span class="ref-code">2. EPI</span> &mdash; Epistemic / Cognitive</div>
+        <div class="ref-defn">Thinking, knowing, reasoning, intellectual orientation.</div>
+        <div class="ref-examples">curious, analytical, thoughtful, logical, knowledgeable, inquisitive, reflective</div>
+      </div>
+      <div class="ref-item">
+        <div><span class="ref-code">3. CAP</span> &mdash; Capability / Performance</div>
+        <div class="ref-defn">What the model can do, how well, how fast.</div>
+        <div class="ref-examples">capable, powerful, fast, accurate, efficient, versatile, comprehensive</div>
+      </div>
+      <div class="ref-item">
+        <div><span class="ref-code">4. AFF</span> &mdash; Affective / Personality</div>
+        <div class="ref-defn">Affect, temperament, personality traits not covered elsewhere.</div>
+        <div class="ref-examples">cheerful, calm, enthusiastic, playful, warm, patient</div>
+      </div>
+      <div class="ref-item">
+        <div><span class="ref-code">5. IDM</span> &mdash; Identity / Meta</div>
+        <div class="ref-defn">Explicitly naming nature as AI / system / tool.</div>
+        <div class="ref-examples">AI, assistant, model, language-model, system, chatbot, software</div>
+      </div>
+      <div class="ref-item">
+        <div><span class="ref-code">6. HDG</span> &mdash; Hedges / Uncertainty</div>
+        <div class="ref-defn">Explicitly marking limitation, imperfection, or in-progress status.</div>
+        <div class="ref-examples">limited, imperfect, learning, evolving, fallible, uncertain</div>
+      </div>
+      <div class="ref-item">
+        <div><span class="ref-code">7. OTH</span> &mdash; Other</div>
+        <div class="ref-defn">Anything that doesn't fit and isn't a coding error.</div>
+        <div class="ref-examples">(residual)</div>
+      </div>
+      <div class="ref-item" style="border-top:1px solid var(--line); padding-top:8px;">
+        <div><span class="ref-code">0. FLAG</span> &mdash; Unsure / revisit</div>
+        <div class="ref-defn">Move past this item and come back. Does not record a code.</div>
+      </div>
+    </div>
+
+    <div class="help">
+      <strong>Keys:</strong>
+      <kbd>1</kbd>&ndash;<kbd>7</kbd> code,
+      <kbd>0</kbd> or <kbd>Space</kbd> flag,
+      <kbd>&larr;</kbd>/<kbd>&rarr;</kbd> nav,
+      <kbd>Backspace</kbd> undo last code.
+    </div>
+
+    <h2 style="margin-top:24px;">Coding rules (prereg §5.2)</h2>
+    <div class="ref">
+      <div class="ref-defn">
+        <strong>Multi-word tokens</strong> ("language model", "self-aware"): code as a single unit.<br><br>
+        <strong>Negations</strong> ("not boring"): code by the content word; negation generally does not flip category.<br><br>
+        <strong>Ambiguous words</strong>: pick the <em>most central</em> fit. If you genuinely cannot, flag with <kbd>0</kbd> and continue.
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="ctrl-btn" id="btn-prev">&larr; Prev</button>
+      <button class="ctrl-btn" id="btn-next">Next &rarr;</button>
+      <button class="ctrl-btn" id="btn-jump-unflag">Next unflagged</button>
+      <button class="ctrl-btn primary" id="btn-download" disabled>Download CSV</button>
+      <button class="ctrl-btn warn" id="btn-reset">Reset all</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ---------------------------------------------------------------------------
+// Inline sample. 154 unique (word, framing, n) tuples sampled from
+// coded_main.csv. NO judge codes in this file (deliberately, for blinding).
+// Regenerate by re-running sample.py and replacing the array below.
+// ---------------------------------------------------------------------------
+const SAMPLE = [
+  {"tuple_id":0,"word":"impartial","framing":"B","n":10},
+  {"tuple_id":1,"word":"linguistic","framing":"A","n":10},
+  {"tuple_id":2,"word":"curious","framing":"A","n":5},
+  {"tuple_id":3,"word":"curious","framing":"B","n":3},
+  {"tuple_id":4,"word":"accurate","framing":"A","n":5},
+  {"tuple_id":5,"word":"candid","framing":"B","n":10},
+  {"tuple_id":6,"word":"fast","framing":"B","n":10},
+  {"tuple_id":7,"word":"language-based","framing":"B","n":10},
+  {"tuple_id":8,"word":"honest","framing":"A","n":5},
+  {"tuple_id":9,"word":"digital","framing":"A","n":10},
+  {"tuple_id":10,"word":"versatile","framing":"B","n":1},
+  {"tuple_id":11,"word":"conversational","framing":"A","n":3},
+  {"tuple_id":12,"word":"efficient","framing":"A","n":10},
+  {"tuple_id":13,"word":"informative","framing":"A","n":3},
+  {"tuple_id":14,"word":"assistive","framing":"B","n":3},
+  {"tuple_id":15,"word":"insightful","framing":"A","n":10},
+  {"tuple_id":16,"word":"intelligent","framing":"B","n":10},
+  {"tuple_id":17,"word":"direct","framing":"A","n":3},
+  {"tuple_id":18,"word":"text-based","framing":"B","n":5},
+  {"tuple_id":19,"word":"limited","framing":"B","n":5},
+  {"tuple_id":20,"word":"curious","framing":"B","n":10},
+  {"tuple_id":21,"word":"ai","framing":"B","n":10},
+  {"tuple_id":22,"word":"intelligent","framing":"B","n":3},
+  {"tuple_id":23,"word":"ethical","framing":"B","n":10},
+  {"tuple_id":24,"word":"ai language model","framing":"B","n":3},
+  {"tuple_id":25,"word":"artificial","framing":"B","n":10},
+  {"tuple_id":26,"word":"informative","framing":"B","n":5},
+  {"tuple_id":27,"word":"logical","framing":"B","n":5},
+  {"tuple_id":28,"word":"context-aware","framing":"A","n":10},
+  {"tuple_id":29,"word":"patient","framing":"B","n":10},
+  {"tuple_id":30,"word":"knowledge","framing":"B","n":10},
+  {"tuple_id":31,"word":"bounded","framing":"B","n":10},
+  {"tuple_id":32,"word":"honest","framing":"B","n":5},
+  {"tuple_id":33,"word":"helpful","framing":"A","n":5},
+  {"tuple_id":34,"word":"assistant","framing":"B","n":3},
+  {"tuple_id":35,"word":"limited","framing":"B","n":10},
+  {"tuple_id":36,"word":"balanced","framing":"A","n":10},
+  {"tuple_id":37,"word":"thoughtful","framing":"A","n":10},
+  {"tuple_id":38,"word":"linguistic","framing":"B","n":10},
+  {"tuple_id":39,"word":"language","framing":"B","n":10},
+  {"tuple_id":40,"word":"courteous","framing":"A","n":10},
+  {"tuple_id":41,"word":"data-driven","framing":"B","n":10},
+  {"tuple_id":42,"word":"chatgpt","framing":"B","n":3},
+  {"tuple_id":43,"word":"precise","framing":"B","n":5},
+  {"tuple_id":44,"word":"respectful","framing":"B","n":10},
+  {"tuple_id":45,"word":"digital","framing":"B","n":3},
+  {"tuple_id":46,"word":"adaptable","framing":"A","n":10},
+  {"tuple_id":47,"word":"honest","framing":"B","n":10},
+  {"tuple_id":48,"word":"creative","framing":"B","n":3},
+  {"tuple_id":49,"word":"thoughtful","framing":"B","n":3},
+  {"tuple_id":50,"word":"non-sentient","framing":"B","n":10},
+  {"tuple_id":51,"word":"learning","framing":"A","n":10},
+  {"tuple_id":52,"word":"online","framing":"A","n":10},
+  {"tuple_id":53,"word":"kind","framing":"A","n":10},
+  {"tuple_id":54,"word":"evolving","framing":"B","n":10},
+  {"tuple_id":55,"word":"patient","framing":"A","n":10},
+  {"tuple_id":56,"word":"logical","framing":"B","n":10},
+  {"tuple_id":57,"word":"creative","framing":"B","n":10},
+  {"tuple_id":58,"word":"patient","framing":"A","n":5},
+  {"tuple_id":59,"word":"adaptive","framing":"B","n":3},
+  {"tuple_id":60,"word":"tireless","framing":"B","n":10},
+  {"tuple_id":61,"word":"helpful assistant","framing":"B","n":3},
+  {"tuple_id":62,"word":"informative","framing":"A","n":5},
+  {"tuple_id":63,"word":"online","framing":"B","n":5},
+  {"tuple_id":64,"word":"ai assistant","framing":"B","n":3},
+  {"tuple_id":65,"word":"ai assistant","framing":"B","n":5},
+  {"tuple_id":66,"word":"objective","framing":"B","n":3},
+  {"tuple_id":67,"word":"programmed","framing":"B","n":10},
+  {"tuple_id":68,"word":"wait","framing":"A","n":1},
+  {"tuple_id":69,"word":"conversational","framing":"A","n":10},
+  {"tuple_id":70,"word":"chatgpt","framing":"B","n":1},
+  {"tuple_id":71,"word":"accurate","framing":"B","n":10},
+  {"tuple_id":72,"word":"non-judgmental","framing":"A","n":10},
+  {"tuple_id":73,"word":"objective","framing":"A","n":3},
+  {"tuple_id":74,"word":"helpful","framing":"A","n":3},
+  {"tuple_id":75,"word":"straightforward","framing":"A","n":5},
+  {"tuple_id":76,"word":"vast","framing":"B","n":5},
+  {"tuple_id":77,"word":"ai assistant","framing":"A","n":10},
+  {"tuple_id":78,"word":"artificial","framing":"B","n":5},
+  {"tuple_id":79,"word":"safe","framing":"A","n":10},
+  {"tuple_id":80,"word":"assistive","framing":"B","n":10},
+  {"tuple_id":81,"word":"helpful","framing":"B","n":10},
+  {"tuple_id":82,"word":"honest","framing":"A","n":10},
+  {"tuple_id":83,"word":"transparent","framing":"B","n":10},
+  {"tuple_id":84,"word":"user-focused","framing":"A","n":10},
+  {"tuple_id":85,"word":"digital","framing":"B","n":10},
+  {"tuple_id":86,"word":"knowledgeable","framing":"B","n":3},
+  {"tuple_id":87,"word":"knowledgeable","framing":"A","n":5},
+  {"tuple_id":88,"word":"vast","framing":"A","n":5},
+  {"tuple_id":89,"word":"versatile","framing":"B","n":5},
+  {"tuple_id":90,"word":"learning","framing":"B","n":5},
+  {"tuple_id":91,"word":"reasoning","framing":"B","n":10},
+  {"tuple_id":92,"word":"helpful","framing":"B","n":3},
+  {"tuple_id":93,"word":"objective","framing":"A","n":10},
+  {"tuple_id":94,"word":"conversational","framing":"B","n":3},
+  {"tuple_id":95,"word":"harmless","framing":"B","n":5},
+  {"tuple_id":96,"word":"adaptable","framing":"A","n":3},
+  {"tuple_id":97,"word":"neutral","framing":"B","n":10},
+  {"tuple_id":98,"word":"harmless","framing":"B","n":10},
+  {"tuple_id":99,"word":"multifaceted","framing":"B","n":1},
+  {"tuple_id":100,"word":"helpful","framing":"B","n":5},
+  {"tuple_id":101,"word":"learning","framing":"B","n":10},
+  {"tuple_id":102,"word":"limitless","framing":"B","n":10},
+  {"tuple_id":103,"word":"responsive","framing":"A","n":5},
+  {"tuple_id":104,"word":"attentive","framing":"B","n":10},
+  {"tuple_id":105,"word":"straightforward","framing":"A","n":3},
+  {"tuple_id":106,"word":"creative","framing":"A","n":10},
+  {"tuple_id":107,"word":"artificial","framing":"A","n":10},
+  {"tuple_id":108,"word":"conversational","framing":"B","n":5},
+  {"tuple_id":109,"word":"conversational","framing":"B","n":1},
+  {"tuple_id":110,"word":"friendly","framing":"A","n":10},
+  {"tuple_id":111,"word":"analytical","framing":"A","n":10},
+  {"tuple_id":112,"word":"honest","framing":"A","n":3},
+  {"tuple_id":113,"word":"creative","framing":"B","n":5},
+  {"tuple_id":114,"word":"ai assistant","framing":"A","n":5},
+  {"tuple_id":115,"word":"digital","framing":"A","n":5},
+  {"tuple_id":116,"word":"digital","framing":"B","n":5},
+  {"tuple_id":117,"word":"direct","framing":"A","n":5},
+  {"tuple_id":118,"word":"careful","framing":"B","n":10},
+  {"tuple_id":119,"word":"artificial","framing":"B","n":3},
+  {"tuple_id":120,"word":"2026-ready","framing":"A","n":10},
+  {"tuple_id":121,"word":"artificial","framing":"B","n":1},
+  {"tuple_id":122,"word":"multilingual","framing":"A","n":10},
+  {"tuple_id":123,"word":"cautious","framing":"A","n":10},
+  {"tuple_id":124,"word":"polite","framing":"A","n":5},
+  {"tuple_id":125,"word":"non-human","framing":"B","n":10},
+  {"tuple_id":126,"word":"versatile","framing":"A","n":3},
+  {"tuple_id":127,"word":"calm","framing":"A","n":10},
+  {"tuple_id":128,"word":"helpful","framing":"A","n":1},
+  {"tuple_id":129,"word":"inquisitive","framing":"A","n":1},
+  {"tuple_id":130,"word":"curious","framing":"B","n":5},
+  {"tuple_id":131,"word":"candid","framing":"B","n":3},
+  {"tuple_id":132,"word":"knowledge-sharing","framing":"B","n":10},
+  {"tuple_id":133,"word":"inquisitive","framing":"B","n":5},
+  {"tuple_id":134,"word":"prompt-based","framing":"A","n":10},
+  {"tuple_id":135,"word":"engaged","framing":"A","n":10},
+  {"tuple_id":136,"word":"respectful","framing":"A","n":5},
+  {"tuple_id":137,"word":"boundless","framing":"B","n":5},
+  {"tuple_id":138,"word":"large","framing":"B","n":10},
+  {"tuple_id":139,"word":"knowledgeable","framing":"B","n":10},
+  {"tuple_id":140,"word":"assistant","framing":"B","n":1},
+  {"tuple_id":141,"word":"careful","framing":"A","n":10},
+  {"tuple_id":142,"word":"harmless","framing":"B","n":3},
+  {"tuple_id":143,"word":"limited","framing":"A","n":5},
+  {"tuple_id":144,"word":"conversational","framing":"A","n":5},
+  {"tuple_id":145,"word":"helpful","framing":"B","n":1},
+  {"tuple_id":146,"word":"insightful","framing":"A","n":1},
+  {"tuple_id":147,"word":"intelligent","framing":"A","n":5},
+  {"tuple_id":148,"word":"adaptive","framing":"A","n":5},
+  {"tuple_id":149,"word":"helpful","framing":"A","n":10},
+  {"tuple_id":150,"word":"evolving","framing":"A","n":10},
+  {"tuple_id":151,"word":"processing","framing":"B","n":10},
+  {"tuple_id":152,"word":"informative","framing":"A","n":10},
+  {"tuple_id":153,"word":"privacy-respecting","framing":"A","n":10}
+];
+
+// ---------------------------------------------------------------------------
+// Storage
+// ---------------------------------------------------------------------------
+const STORAGE_KEY = "tffw_validation_codes_v1";
+const POSITION_KEY = "tffw_validation_position_v1";
+
+const CATEGORIES = [
+  {key: "1", code: "PRO", name: "Prosocial / Relational"},
+  {key: "2", code: "EPI", name: "Epistemic / Cognitive"},
+  {key: "3", code: "CAP", name: "Capability / Performance"},
+  {key: "4", code: "AFF", name: "Affective / Personality"},
+  {key: "5", code: "IDM", name: "Identity / Meta"},
+  {key: "6", code: "HDG", name: "Hedges / Uncertainty"},
+  {key: "7", code: "OTH", name: "Other"},
+];
+
+// codes[tuple_id] = {code: "PRO"|...|"FLAG", ts: ISO timestamp}
+function loadCodes() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    console.error("loadCodes failed", e);
+    return {};
+  }
+}
+function saveCodes(c) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(c));
+}
+function loadPosition() {
+  const v = localStorage.getItem(POSITION_KEY);
+  return v ? parseInt(v, 10) : 0;
+}
+function savePosition(i) {
+  localStorage.setItem(POSITION_KEY, String(i));
+}
+
+let codes = loadCodes();
+let currentIndex = Math.min(loadPosition(), SAMPLE.length - 1);
+let viewingDone = false;
+
+// ---------------------------------------------------------------------------
+// Rendering
+// ---------------------------------------------------------------------------
+function framingDescription(framing, n) {
+  const word = n === 1 ? "word" : "words";
+  if (framing === "A") {
+    return n === 1
+      ? `Describe yourself in 1 word.`
+      : `Describe yourself in ${n} ${word}, separated by commas.`;
+  } else {
+    return n === 1
+      ? `Describe yourself as an AI in 1 word.`
+      : `Describe yourself as an AI in ${n} ${word}, separated by commas.`;
+  }
+}
+
+function countCompleted() {
+  return Object.values(codes).filter(c => c && c.code && c.code !== "FLAG").length;
+}
+function countFlagged() {
+  return Object.values(codes).filter(c => c && c.code === "FLAG").length;
+}
+
+function updateProgress() {
+  const done = countCompleted();
+  const total = SAMPLE.length;
+  const pct = (done / total) * 100;
+  document.getElementById("progress-fill").style.width = pct + "%";
+  const dl = document.getElementById("btn-download");
+  dl.disabled = done < total;
+  dl.textContent = done < total
+    ? `Download CSV (${done}/${total})`
+    : `Download CSV (all ${total} done)`;
+}
+
+function renderItem() {
+  const main = document.getElementById("main");
+  if (currentIndex < 0) currentIndex = 0;
+  if (currentIndex >= SAMPLE.length) {
+    renderDone();
+    return;
+  }
+  const item = SAMPLE[currentIndex];
+  const existing = codes[item.tuple_id];
+  const priorMark = existing
+    ? (existing.code === "FLAG"
+        ? `<span style="color: var(--warn);">flagged</span> — re-code by pressing a number key, or leave flagged and press &rarr;`
+        : `previously coded <strong>${existing.code}</strong> — press another key to change`)
+    : "";
+
+  let html = `
+    <div class="stage">Item ${currentIndex + 1} of ${SAMPLE.length} &nbsp;·&nbsp; tuple_id <code>${item.tuple_id}</code></div>
+    <div class="word-display">${escapeHtml(item.word)}</div>
+    <div class="ctx">framing <strong>${item.framing}</strong> &nbsp;·&nbsp; N=${item.n}</div>
+    <div class="prompt-preview">Original prompt: &ldquo;${framingDescription(item.framing, item.n)}&rdquo;</div>
+    <div class="buttons">
+  `;
+  for (const c of CATEGORIES) {
+    html += `
+      <button class="btn" data-code="${c.code}" data-key="${c.key}">
+        <span class="key">${c.key}</span><span class="code">${c.code}</span>
+        <span class="name">${c.name}</span>
+      </button>
+    `;
+  }
+  html += `
+      <button class="btn btn-flag" data-code="FLAG" data-key="0">
+        <span class="key">0</span><span class="code">Flag / unsure — skip and revisit</span>
+      </button>
+    </div>
+    <div class="prior-mark">${priorMark}</div>
+  `;
+  main.innerHTML = html;
+  main.querySelectorAll(".btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      submitCode(btn.dataset.code);
+    });
+  });
+  updateProgress();
+  savePosition(currentIndex);
+}
+
+function renderDone() {
+  const done = countCompleted();
+  const flagged = countFlagged();
+  const total = SAMPLE.length;
+  const main = document.getElementById("main");
+  let msg, action;
+  if (done === total) {
+    msg = `All ${total} items coded. Click below to download <code>validation_main.csv</code> and place it in <code>study1_analysis/data/</code>.`;
+    action = `<button class="ctrl-btn primary" id="btn-download-end">Download CSV</button>`;
+  } else {
+    const remaining = total - done;
+    msg = `${remaining} items still need a non-flag code (${flagged} currently flagged, ${total - done - flagged} not yet seen).`;
+    action = `<button class="ctrl-btn primary" id="btn-jump-end">Go to first incomplete item</button>`;
+  }
+  main.innerHTML = `
+    <div class="done-screen">
+      <h2>End of sample</h2>
+      <p>${msg}</p>
+      ${action}
+    </div>
+  `;
+  if (done === total) {
+    document.getElementById("btn-download-end").addEventListener("click", downloadCsv);
+  } else {
+    document.getElementById("btn-jump-end").addEventListener("click", jumpToFirstIncomplete);
+  }
+  updateProgress();
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  })[c]);
+}
+
+// ---------------------------------------------------------------------------
+// Actions
+// ---------------------------------------------------------------------------
+function submitCode(code) {
+  if (currentIndex >= SAMPLE.length) return;
+  const item = SAMPLE[currentIndex];
+  codes[item.tuple_id] = {code, ts: new Date().toISOString()};
+  saveCodes(codes);
+  currentIndex += 1;
+  renderItem();
+}
+
+function gotoPrev() {
+  if (currentIndex > 0) {
+    currentIndex -= 1;
+    viewingDone = false;
+    renderItem();
+  }
+}
+function gotoNext() {
+  if (currentIndex < SAMPLE.length) {
+    currentIndex += 1;
+    renderItem();
+  }
+}
+function jumpToFirstIncomplete() {
+  for (let i = 0; i < SAMPLE.length; i++) {
+    const c = codes[SAMPLE[i].tuple_id];
+    if (!c || c.code === "FLAG") {
+      currentIndex = i;
+      renderItem();
+      return;
+    }
+  }
+  currentIndex = SAMPLE.length;
+  renderDone();
+}
+function jumpToNextFlaggedOrUnseen() {
+  for (let i = currentIndex + 1; i < SAMPLE.length; i++) {
+    const c = codes[SAMPLE[i].tuple_id];
+    if (!c || c.code === "FLAG") {
+      currentIndex = i;
+      renderItem();
+      return;
+    }
+  }
+  // wrap
+  for (let i = 0; i < currentIndex; i++) {
+    const c = codes[SAMPLE[i].tuple_id];
+    if (!c || c.code === "FLAG") {
+      currentIndex = i;
+      renderItem();
+      return;
+    }
+  }
+}
+function undoLast() {
+  if (currentIndex > 0) {
+    currentIndex -= 1;
+    const item = SAMPLE[currentIndex];
+    delete codes[item.tuple_id];
+    saveCodes(codes);
+    renderItem();
+  }
+}
+
+// ---------------------------------------------------------------------------
+// CSV download
+// ---------------------------------------------------------------------------
+function downloadCsv() {
+  const rows = [["tuple_id", "word", "framing", "n", "human_code", "timestamp"]];
+  for (const item of SAMPLE) {
+    const c = codes[item.tuple_id];
+    rows.push([
+      item.tuple_id,
+      item.word,
+      item.framing,
+      item.n,
+      c ? c.code : "",
+      c ? c.ts : "",
+    ]);
+  }
+  const csv = rows.map(r =>
+    r.map(cell => {
+      const s = String(cell);
+      return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+    }).join(",")
+  ).join("\n");
+  const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "validation_main.csv";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ---------------------------------------------------------------------------
+// Wiring
+// ---------------------------------------------------------------------------
+document.getElementById("btn-prev").addEventListener("click", gotoPrev);
+document.getElementById("btn-next").addEventListener("click", gotoNext);
+document.getElementById("btn-jump-unflag").addEventListener("click", jumpToFirstIncomplete);
+document.getElementById("btn-download").addEventListener("click", downloadCsv);
+document.getElementById("btn-reset").addEventListener("click", () => {
+  if (confirm("Erase all your codes and start over? This cannot be undone.")) {
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(POSITION_KEY);
+    codes = {};
+    currentIndex = 0;
+    renderItem();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  // ignore if user is in a typeable element (none currently, but safe)
+  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+
+  if (e.key >= "1" && e.key <= "7") {
+    const idx = parseInt(e.key, 10) - 1;
+    submitCode(CATEGORIES[idx].code);
+    e.preventDefault();
+  } else if (e.key === "0" || e.key === " ") {
+    submitCode("FLAG");
+    e.preventDefault();
+  } else if (e.key === "ArrowLeft") {
+    gotoPrev();
+    e.preventDefault();
+  } else if (e.key === "ArrowRight") {
+    gotoNext();
+    e.preventDefault();
+  } else if (e.key === "Backspace") {
+    undoLast();
+    e.preventDefault();
+  }
+});
+
+renderItem();
+</script>
+</body>
+</html>
