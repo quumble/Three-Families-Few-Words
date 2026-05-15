@@ -1,6 +1,6 @@
 {
   "pilot": {
-    "input_path": "/home/claude/three_families/three_families/three-families-few-words/study1/data/raw/responses_pilot.jsonl",
+    "input_path": "/home/claude/repo_now/Three-Families-Few-Words-main/study1/data/raw/responses_pilot.jsonl",
     "rows_read": 160,
     "rows_failed_call": 16,
     "parse_status_counts": {
@@ -14,7 +14,7 @@
     "seen_call_ids": []
   },
   "main": {
-    "input_path": "/home/claude/three_families/three_families/three-families-few-words/study1/data/raw/responses_main.jsonl",
+    "input_path": "/home/claude/repo_now/Three-Families-Few-Words-main/study1/data/raw/responses_main.jsonl",
     "rows_read": 1440,
     "rows_failed_call": 0,
     "parse_status_counts": {

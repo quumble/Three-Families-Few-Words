@@ -1,7 +1,8 @@
 """
 Three Families, Few Words — parser.
 
-Reads the JSONL raw responses (one record per API call) and produces two CSVs:
+Reads the JSONL raw responses (one record per API call) from `study1/data/raw/`
+and produces two CSVs in `study1_analysis/data/`:
 
 1. per_call.csv  — one row per API call, with parse_status and the extracted
                    word list (JSON-encoded). Always includes ALL calls,
@@ -62,9 +63,15 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-REPO_ROOT = Path(__file__).resolve().parents[1]  # study1/
-DATA_RAW = REPO_ROOT / "data" / "raw"
-DATA_PARSED = REPO_ROOT / "data" / "parsed"
+# Path resolution:
+#   __file__                       = repo/study1_analysis/parser/parse.py
+#   parents[0]                     = repo/study1_analysis/parser/
+#   parents[1]                     = repo/study1_analysis/
+#   parents[2]                     = repo/
+REPO_ROOT   = Path(__file__).resolve().parents[2]
+DATA_RAW    = REPO_ROOT / "study1"          / "data" / "raw"
+DATA_PARSED = REPO_ROOT / "study1_analysis" / "data"     # flat: CSVs live directly here
+SUMMARY_DIR = Path(__file__).resolve().parent           # parse_summary.json sits next to this script
 
 # Finish-reason strings from each provider that mean "ran out of output tokens".
 TRUNCATION_FINISH_REASONS = {
@@ -482,8 +489,8 @@ def main() -> None:
         print(f"  → {per_word_path}")
         print()
 
-    # Write a small summary JSON for downstream tooling.
-    summary_path = DATA_PARSED / "parse_summary.json"
+    # Write a small summary JSON next to this script for downstream tooling.
+    summary_path = SUMMARY_DIR / "parse_summary.json"
     with summary_path.open("w", encoding="utf-8") as f:
         json.dump(overall_summary, f, indent=2)
     print(f"summary → {summary_path}")
