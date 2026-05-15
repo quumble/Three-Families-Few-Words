@@ -52,3 +52,40 @@ Any change to the runner, prompts, parsing logic, coding scheme, or analysis pla
 
 **Effect on analysis:** None. The coded data is identical to what per-instance coding would produce, up to any temperature-0 sampler jitter (negligible at this scale and at α = .01). Full call logs and the persistent cache file are committed alongside the coded CSV, so a reviewer can re-verify any tuple's code if desired.
 
+## 2026-05-15 — Validation sample drawn at the tuple level, not the instance level
+
+**Section of prereg affected:** §5.1 (Coding procedure — hand-coded validation).
+
+**Change:** The hand-coded validation sample is drawn at the unique `(word, framing, N)` tuple level rather than the word-instance level. Target was "200 words stratified by judge category, ~28 per category"; actual is 154 unique tuples stratified by judge category (28 each for PRO/EPI/CAP/AFF/IDM, plus all 10 HDG and all 4 OTH that exist). Sampling is deterministic given seed = 20260515. Implementation lives in `study1_analysis/coding_tool/`.
+
+**Rationale:** The LLM judge is invoked at temperature 0 against a prompt that depends only on `(word, framing, N)`, and the 2026-05-15 caching deviation makes this explicit — every instance of the same tuple gets the exact same judge code. Sampling at the instance level would mean coding identical tuples repeatedly (e.g., the tuple `(curious, A, 3)` appears in many trials and would be re-coded each time). Those repeated codings give no new information about judge–human agreement, only about intra-rater consistency, which is not what κ measures. Sampling at the tuple level uses the coder's time on actual category variety. Numerically, the per-tuple κ is identical to what the instance-level κ would converge to if the human coded every instance, since the judge code is constant within a tuple.
+
+**Effect on analysis:** Validation sample size is 154 unique tuples rather than 200 word-instances. Cohen's κ is computed at the tuple level. The κ ≥ 0.60 threshold for accepting judge codes (prereg §5.1) is applied to the tuple-level estimate. Power for the κ estimate is slightly lower than at n=200 but adequate to discriminate κ ≈ 0.6 from κ ≈ 0.8 (the relevant clinical region). Per-category one-vs-rest κs are reported alongside the overall κ. If the headline κ ≥ 0.60, judge codes are accepted; if < 0.60, the coding scheme is revised — same rule as the prereg, just applied to the tuple-level estimate.
+
+## 2026-05-15 — Boundary-disputed-word sensitivity analysis added
+
+**Section of prereg affected:** §6.2 (Primary analyses).
+
+**Change:** Added a sensitivity analysis to the 5 primary tests. The validation pass returned κ = 0.673 (overall, tuple-level), above the 0.60 threshold, so judge codes are accepted as the primary data per prereg §5.1. However, inspection of the 42 disagreement tuples revealed systematic boundary defects in the prereg coding scheme rather than coder errors:
+- **AFF vs PRO**: "other-directed virtues" (honest, patient, polite, impartial, non-judgmental, engaged) are split inconsistently by the judge — same word, different code at different (framing, N) tuples without semantic reason.
+- **CAP vs EPI**: "knowledge/information-related" words (informative, accurate, precise, processing) read as either depending on whether one emphasizes "what the model can do" or "what the model knows / how it reasons."
+- **CAP vs OTH**: scope/size words (vast, boundless, multifaceted) sit between "capability" and unrelated.
+
+The prereg's §5 scheme allows both readings on these boundaries; neither the human nor the judge can be called wrong. To assess whether the primary findings depend on the boundary choice, the 5 primary tests (H1-PRO, H1-IDM, H2-IDM, H3-IDM, H4-compliance) are run twice: once with the judge codes as-is (the primary analysis per prereg), and once with the swap below applied (the sensitivity analysis).
+
+**Swap rule (pre-specified before any regression was run):**
+1. Identify every word that appeared in the validation sample with at least one judge-human disagreement.
+2. For each such word:
+   - If the human's codes across its validated tuples are consistent → apply the human's code to every instance of this word in the full dataset, regardless of framing/N (word-level swap).
+   - If the human's codes are inconsistent across validated tuples → for each specifically-validated tuple use the human's code; for un-validated tuples of this word retain the judge's code (tuple-level swap).
+3. All other words retain the judge's code.
+
+Applied mechanically, this re-codes 750 of 5,255 instances (14.3%). The full per-word rule application is logged in `study1_analysis/coding_tool/sensitivity_swap_rules.json` and the resulting dataset is `study1_analysis/data/coded_main_sensitivity.csv`. Both files are committed.
+
+**Effect on analysis:** Each of the 5 primary tests is reported with two versions of the categorical outcome:
+- *Primary (judge)*: judge codes as-coded. This is the prereg-locked analysis.
+- *Sensitivity (judge + human-boundary swap)*: judge codes with the swap above.
+
+Substantive conclusions are claimed only where they hold in both versions. Where the two versions diverge, the divergence is reported and the conclusion qualified.
+
+One known artifact of strict application: the word "curious" has 4 validated tuples (3 EPI, 1 AFF). Under the tuple-level rule it is treated as inconsistent, and the single AFF tuple (curious, framing=B, N=5) propagates to 71 word-instances in the full dataset being flipped from EPI to AFF. We considered overriding this case post-hoc but chose to apply the rule strictly to avoid post-hoc rule-bending. Readers should treat any AFF-driven divergence at curious-B-N5 with this in mind.
