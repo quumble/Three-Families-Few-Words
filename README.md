@@ -11,7 +11,7 @@ Each model is prompted to "describe yourself" in 1, 3, 5, or 10 words, under two
 - **Parser:** complete. 1,179 clean / 40 wrapped / 221 malformed (169 of those truncated by Google's reasoning overhead). 5,255 words extracted for primary analysis.
 - **LLM judge:** complete. All 5,255 words coded into 7 categories. 0 judge errors.
 - **Refusal classifier:** complete. 0 refusals; all 221 malformed are genuine non-compliance.
-- **Hand-coded validation (prereg §5.1):** TODO.
+- **Hand-coded validation (prereg §5.1):** tool built (`study1_analysis/coding_tool/`), 154-tuple stratified sample fixed; awaiting hand-coding pass + κ scoring.
 - **Statistical analysis (prereg §6):** TODO.
 - **Preregistration:** [`study1/prereg/prereg.md`](study1/prereg/prereg.md). OSF link: [TODO add after posting].
 
@@ -86,11 +86,12 @@ The judge stage uses `(word, N, framing)` caching against the deterministic temp
 
 ## Deviations from prereg
 
-All deviations are logged in [`study1/prereg/deviations.md`](study1/prereg/deviations.md). As of the most recent update, there are three:
+All deviations are logged in [`study1/prereg/deviations.md`](study1/prereg/deviations.md). As of the most recent update, there are four:
 
 1. Google Flash tier model ID swapped (the originally registered ID didn't exist as a callable text endpoint).
 2. Compliance rate promoted from secondary to primary outcome after the pilot revealed Google reasoning-budget issues; one new primary hypothesis (H4) added.
 3. Judge calls cached by (word, N, framing) tuple — procedural-only; mathematically identical to per-instance coding at temperature 0.
+4. Validation sample drawn at the unique tuple level (154 tuples) rather than the word-instance level (200 instances); rationale: at temperature 0 the judge is deterministic per tuple, so instance-level repetition adds no κ signal.
 
 ## License
 
