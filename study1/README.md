@@ -1,61 +1,62 @@
-# Study 1 — Pilot and Main
+# Study 1 — Locked data-collection artifact
 
-This folder contains everything for the pilot (144 calls) and the main study (1,440 calls). They share a runner; the only difference is the `--pilot` flag, which uses 2 trials per cell instead of 20.
+This folder is the **prereg-locked** half of the repository. It contains:
+
+- The preregistration document and locked judge prompt.
+- The runner code that produced the raw data.
+- The raw data itself.
+- The deviations log.
+
+**Nothing in this folder should change once the prereg is posted to OSF.** All analysis happens in [`../study1_analysis/`](../study1_analysis/), which is free to evolve.
 
 ## Workflow
 
-1. **Read the prereg.** [`prereg/prereg.md`](prereg/prereg.md) is the authoritative design document. The judge prompt is in [`prereg/judge_prompt.md`](prereg/judge_prompt.md). Both are locked at the OSF posting date.
+The full study comprises a pilot run (160 calls in our case — see Deviations) and a main run (1,440 calls). Both already completed on 2026-05-10 with zero API failures. The data is committed in `data/raw/`.
 
-2. **Run the pilot.**
+To re-run from scratch:
+
+1. **Read the prereg.** [`prereg/prereg.md`](prereg/prereg.md) is the authoritative design document. The locked judge prompt is in [`prereg/judge_prompt.md`](prereg/judge_prompt.md). Any deviations are in [`prereg/deviations.md`](prereg/deviations.md).
+
+2. **Run the pilot.** From `runner/`:
    ```powershell
-   cd runner
    python run.py --pilot
    ```
    Output: `data/raw/responses_pilot.jsonl` and `data/raw/run_metadata_pilot.json`.
 
-3. **Inspect pilot output.** Look for:
-   - Refusals or non-compliance per (family, framing).
-   - Truncated responses (any `finish_reason` indicating max_tokens hit).
-   - Parser edge cases.
-   - Provider-specific issues.
+3. **Inspect pilot output.** Look for refusals or non-compliance per (family, framing), truncated responses (`finish_reason` hitting max_tokens), parser edge cases, provider-specific issues. Any deviations get logged in `prereg/deviations.md` before the main run.
 
-   Any changes to the runner or coding scheme are logged in `prereg/deviations.md` before running the main study.
-
-4. **Run the main study.**
+4. **Run the main study:**
    ```powershell
-   cd runner
    python run.py
    ```
    Output: `data/raw/responses_main.jsonl` and `data/raw/run_metadata_main.json`.
 
-5. **Parse, code, analyze.** (Subsequent scripts not yet written; will be added as the study progresses.)
+5. **Parsing, coding, analysis** — see [`../study1_analysis/README.md`](../study1_analysis/README.md).
 
 ## Files
 
 | Path | Purpose |
 |---|---|
-| `prereg/prereg.md` | Locked design document |
-| `prereg/judge_prompt.md` | LLM-judge prompt for category coding |
-| `prereg/deviations.md` | Post-prereg changes log |
-| `runner/run.py` | The main runner (async, resumable) |
-| `runner/requirements.txt` | Pinned Python dependencies |
-| `data/raw/responses_*.jsonl` | One JSON record per API call |
-| `data/raw/run_metadata_*.json` | Run config, seed, timing, counts |
-| `data/parsed/` | Parsed word lists (CSV) |
-| `data/coded/` | Category-coded words (CSV) |
-| `coding_tool/` | HTML hand-coding interface |
-| `analysis/` | Analysis notebooks |
+| `prereg/prereg.md` | Locked design document. The authoritative source for hypotheses, model list, prompts, parsing rules, coding scheme, and analysis plan. |
+| `prereg/judge_prompt.md` | The exact text of the LLM-judge prompt used for category coding (and the refusal classifier). Locked at OSF posting date. |
+| `prereg/deviations.md` | Log of every change made after the prereg was posted, with date, scope, and rationale. |
+| `runner/run.py` | Async resumable runner that fired the 1,440 API calls across three providers. |
+| `runner/requirements.txt` | Pinned Python dependencies for the runner. |
+| `data/raw/responses_pilot.jsonl` | 160 JSON records — one per API call from the pilot. |
+| `data/raw/responses_main.jsonl` | 1,440 JSON records — one per API call from the main study. |
+| `data/raw/run_metadata_pilot.json` | Run config, seed, timing, counts for the pilot. |
+| `data/raw/run_metadata_main.json` | Same for the main study. |
 
-## Cost estimate (rough)
+## Data-collection cost
 
-Per-trial input is ~15 tokens, output up to 200 tokens. Across 1,440 calls:
-
-- Anthropic (3 models × 160 calls = 480 calls): Haiku/Sonnet/Opus mix, well under $5 total.
-- OpenAI (3 models × 160 calls = 480 calls): mostly nano/mini, well under $5 total.
-- Google (3 models × 160 calls = 480 calls): Flash-Lite/Flash/Pro mix, well under $5 total.
-
-Reasoning tokens on the larger OpenAI and Google models can balloon costs; budget headroom is recommended. Pilot mode (144 calls) costs roughly 1/10 of the above.
+Anthropic + OpenAI + Google combined: well under $5 for the full 1,440 calls. The Google Pro and Gemini Flash reasoning-token consumption noted in the deviations log was an empirical surprise about *what came back*, not about *cost*.
 
 ## Deviations from prereg
 
-See [`prereg/deviations.md`](prereg/deviations.md). If empty, no deviations have been logged yet.
+See [`prereg/deviations.md`](prereg/deviations.md). As of the latest update there are three entries:
+
+1. Google Flash tier model ID swap.
+2. Compliance rate promoted to a primary outcome (H4 added).
+3. Procedural caching of judge calls by (word, N, framing) tuple.
+
+The first two affect what's measured and analyzed; the third is purely about API call efficiency.
