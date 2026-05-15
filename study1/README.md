@@ -33,6 +33,12 @@ To re-run from scratch:
 
 5. **Parsing, coding, analysis** — see [`../study1_analysis/README.md`](../study1_analysis/README.md).
 
+## A resume-behavior caveat
+
+The runner's `--resume` flag skips call_ids that already appear with `status == "success"` in the existing JSONL. Failed records are **not** removed. If a call failed in run A and succeeded on retry in run B (resumed against the same JSONL), the file contains both records — one `failed` and one `success` — for the same `call_id`.
+
+The current `responses_main.jsonl` is unaffected: the main study ran from scratch with no failures and no resumes. The pilot JSONL has 160 rows for a 144-task design due to an earlier aborted attempt — the parser's `parse_summary.json` logs this and the pilot is non-confirmatory anyway. Downstream tools (the parser) read all rows but don't de-duplicate; if you ever resume a future run after partial failures, the resulting JSONL will need a dedup pass by `(call_id, status)` before downstream use.
+
 ## Files
 
 | Path | Purpose |
@@ -53,10 +59,12 @@ Anthropic + OpenAI + Google combined: well under $5 for the full 1,440 calls. Th
 
 ## Deviations from prereg
 
-See [`prereg/deviations.md`](prereg/deviations.md). As of the latest update there are three entries:
+See [`prereg/deviations.md`](prereg/deviations.md). As of the latest update there are five entries:
 
 1. Google Flash tier model ID swap.
 2. Compliance rate promoted to a primary outcome (H4 added).
 3. Procedural caching of judge calls by (word, N, framing) tuple.
+4. Validation sample drawn at the unique-tuple level rather than the word-instance level.
+5. Boundary-disputed-word sensitivity analysis added.
 
-The first two affect what's measured and analyzed; the third is purely about API call efficiency.
+The first two affect what's measured and analyzed; the third is purely about API call efficiency; the fourth changes the κ unit of analysis; the fifth adds a second pass of the primary tests against a swapped dataset to check robustness on the AFF/PRO and CAP/EPI scheme boundaries.
