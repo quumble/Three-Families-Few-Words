@@ -41,3 +41,14 @@ Any change to the runner, prompts, parsing logic, coding scheme, or analysis pla
 **Rationale:** The pilot revealed that Gemini 3 Flash and Gemini 3 Pro consume nearly the entire 200-token output budget on hidden reasoning, producing systematically truncated or non-compliant responses (22/22 truncation flags in the pilot came from these two cells). The decision is to leave `max_tokens=200` and the no-thinking-override settings unchanged — the truncation pattern is itself a substantive cross-provider finding and we want to report it. Doing so honestly requires elevating compliance rate to a primary outcome rather than treating the systematic Google failure as a nuisance variable.
 
 **Effect on analysis:** Adds one primary hypothesis (H4); tightens the Bonferroni threshold for the four pre-registered category tests; adds an honest caveat to the Google Flash/Pro category estimates. Does not change any code or any data collection parameter.
+
+## 2026-05-15 — Judge calls cached by (word, N, framing) tuple
+
+**Section of prereg affected:** §5.1 (Coding procedure), procedural only.
+
+**Change:** Instead of issuing one judge API call per word instance (5,255 calls for the main study), the judge issues one call per unique `(word, N, framing)` tuple (317 calls for the main study) and propagates the resulting code to every per-word row with the same tuple. The coded CSV records a `cache_hit` boolean per row for traceability, and every fresh API call is logged with full request/response/usage metadata in `study1_analysis/judge/judge_call_log.jsonl`.
+
+**Rationale:** The judge model is invoked at temperature 0 with a prompt fully determined by `(word, N, framing_description)`. At temperature 0 the output is deterministic, so coding the same tuple twice produces the same code twice. Caching produces an analysis dataset that is mathematically identical to per-instance coding while saving ~94% of API calls (and the corresponding cost and rate-limit time). The cache is persisted across runs to allow resumability.
+
+**Effect on analysis:** None. The coded data is identical to what per-instance coding would produce, up to any temperature-0 sampler jitter (negligible at this scale and at α = .01). Full call logs and the persistent cache file are committed alongside the coded CSV, so a reviewer can re-verify any tuple's code if desired.
+
