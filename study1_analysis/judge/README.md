@@ -24,6 +24,8 @@ The cache persists in `judge_cache.json`. Reruns are incremental — re-running 
 
 This is a procedural clarification of prereg §5, logged in `../../study1/prereg/deviations.md`. Coded data is mathematically identical to coding every instance separately.
 
+The refusal classifier (the second pass) is **not** cached. Each `--refusal-too` dry-run and each `--run` re-classifies the malformed rows from scratch and appends to `judge_call_log.jsonl`. The committed `judge_call_log.jsonl` therefore contains 10 duplicate refusal entries: the dry-run pass coded 10 malformed rows before the full main run re-coded all 221 (including those same 10). The final `refusal_classifications_main.csv` has 221 unique rows — the duplicates exist only in the call log and reflect that the classifier was run twice on those rows, not that the dataset is duplicated. Both classifications agreed (all 221 are MALFORMED), so the duplication has no effect on the data, but if a future re-run is desired the simplest fix is to delete `judge_call_log.jsonl` and re-run `--run` once with no preceding dry-run.
+
 ## Prompt caching
 
 Anthropic's prompt-cache minimum prefix length (~1024 tokens) is larger than our static rules block (~400 tokens). Prompt caching is NOT enabled — it would be a no-op. The two-block message structure is preserved in `build_judge_messages` so prompt caching can be re-enabled trivially if the rules ever grow past the threshold.
@@ -92,4 +94,9 @@ assert JUDGE_USER_TEMPLATE == _CACHED_PREAMBLE + _VARIABLE_SUFFIX
 
 ## Validation
 
-The hand-coded validation sample (prereg §5.1) lives in `../coding_tool/` (TODO — not yet built). Cohen's kappa between this judge and the human coder will be computed in `../notebooks/` once that step is done.
+The hand-coded validation pass is complete and lives in [`../coding_tool/`](../coding_tool/). Overall Cohen's κ = 0.673 between judge and human across the 154-tuple stratified sample (above the prereg's 0.60 threshold); judge codes are accepted as primary. Per-category and full-disagreement details are in [`../coding_tool/kappa_summary.json`](../coding_tool/kappa_summary.json) and [`../coding_tool/disagreements.csv`](../coding_tool/disagreements.csv). The boundary-disputed-word sensitivity dataset is [`../data/coded_main_sensitivity.csv`](../data/coded_main_sensitivity.csv); see the 2026-05-15 sensitivity deviation entry.
+
+## Caveats worth knowing
+
+- **`latency_seconds` in `judge_call_log.jsonl` includes semaphore wait time.** The timer wraps the whole `async with sem: await call_judge(...)` block, so a call that waited 4 seconds for a free concurrency slot before sending the request gets a 4-second-larger latency. This makes the field useful for end-to-end wall-clock accounting but **not** for per-call API latency benchmarking.
+- **Refusal classifier is not cached** (see "Cache strategy" above) and re-runs duplicate entries in the call log.
