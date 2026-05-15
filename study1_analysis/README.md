@@ -7,19 +7,19 @@ The split is deliberate: `study1/` is a snapshot of the preregistered design and
 ## Pipeline
 
 ```
-study1/data/raw/                  parser/         judge/
-  responses_*.jsonl     ──▶    parse.py    ──▶  code.py
-                                                                       
-                                    │              │
-                                    ▼              ▼
-                              data/per_*.csv    data/coded_*.csv
-                                                data/refusal_*.csv
-                                                judge/judge_cache.json
-                                                judge/judge_call_log.jsonl
+study1/data/raw/                  parser/         judge/             coding_tool/
+  responses_*.jsonl     ──▶    parse.py    ──▶  code.py    ──▶  sample.py
+                                                                  coding_tool.html
+                                    │              │              kappa.py
+                                    ▼              ▼              apply_sensitivity_swap.py
+                              data/per_*.csv    data/coded_*.csv         │
+                                                data/refusal_*.csv        ▼
+                                                judge/judge_cache.json   data/validation_main.csv
+                                                judge/judge_call_log.jsonl   data/coded_main_sensitivity.csv
 
-                                                       │
-                                                       ▼
-                                              (TODO) coding_tool/, notebooks/
+                                                                                  │
+                                                                                  ▼
+                                                                         (TODO) notebooks/
 ```
 
 Each stage is independent: re-run the parser without re-running the judge; fit a new model in `notebooks/` without re-running anything upstream.
