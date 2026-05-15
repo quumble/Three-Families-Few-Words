@@ -14,6 +14,8 @@ Cohen's κ between human and judge is computed.
 | `sample_keyed.csv` | The same rows with `judge_code` attached. Used only by `kappa.py` after coding is complete. **Do not open this before coding** if you want to preserve blinding. |
 | `coding_tool.html` | Single-file static tool for hand-coding. Bakes the blinded sample inline (no network access needed). |
 | `kappa.py` | Reads `sample_keyed.csv` + `../data/validation_main.csv` (your coding output) and computes overall κ, per-category one-vs-rest κ, percent agreement, confusion matrix, and a disagreements CSV. |
+| `apply_sensitivity_swap.py` | Generates the boundary-disputed-word sensitivity dataset by applying the swap rule (deviations.md, 2026-05-15) to `coded_main.csv`. Writes `../data/coded_main_sensitivity.csv` and a `sensitivity_swap_rules.json` audit file. |
+| `sensitivity_swap_rules.json` | Per-word swap policy actually applied: word-level vs tuple-level, the human code used, and the validated tuples that justify each policy. |
 
 ## Workflow
 
@@ -106,3 +108,15 @@ Inspect these manually to decide whether disagreements reflect:
 
 The third case, if widespread, is what would push κ below 0.60 and trigger a
 coding-scheme revision per prereg §5.1.
+
+## Sensitivity analysis (post-validation)
+
+For the actual main-study run, validation returned κ = 0.673 (above threshold, judge codes accepted). Disagreements clustered on the AFF↔PRO and CAP↔EPI boundaries and turned out to reflect scheme ambiguity rather than coder error. Rather than revise the scheme (the κ < 0.60 path) we kept the locked scheme and added a sensitivity analysis. To regenerate it:
+
+```powershell
+python apply_sensitivity_swap.py
+```
+
+This applies the swap rule (deviations.md, 2026-05-15 "Boundary-disputed-word sensitivity analysis") to `../data/coded_main.csv` and writes `../data/coded_main_sensitivity.csv` plus the per-word rule audit in `sensitivity_swap_rules.json`. The 5 primary regressions are run against both `coded_main.csv` and `coded_main_sensitivity.csv` in the analysis notebook; substantive conclusions are claimed only where they hold in both versions.
+
+The swap is deterministic given `validation_main.csv` and `coded_main.csv`. Re-running the script regenerates the same files. **Known artifact**: under the strict tuple-level rule, the word "curious" at the single tuple (B, N=5) flips 71 instances to AFF on the basis of one validation entry that disagreed with three others. This is documented in the deviation entry; we chose to apply the rule strictly rather than override post-hoc.

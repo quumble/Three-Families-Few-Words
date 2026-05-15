@@ -1,0 +1,517 @@
+{
+  "accurate": {
+    "policy": "tuple_level",
+    "reason": "human coded this word inconsistently across validated tuples",
+    "n_validated_tuples": 2,
+    "per_tuple": {
+      "A_N5": {
+        "judge_code": "CAP",
+        "human_code": "CAP"
+      },
+      "B_N10": {
+        "judge_code": "CAP",
+        "human_code": "EPI"
+      }
+    }
+  },
+  "assistive": {
+    "policy": "word_level",
+    "human_code": "IDM",
+    "n_validated_tuples": 2,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 3,
+        "judge_code": "PRO",
+        "human_code": "IDM"
+      },
+      {
+        "framing": "B",
+        "n": 10,
+        "judge_code": "PRO",
+        "human_code": "IDM"
+      }
+    ]
+  },
+  "attentive": {
+    "policy": "word_level",
+    "human_code": "EPI",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 10,
+        "judge_code": "PRO",
+        "human_code": "EPI"
+      }
+    ]
+  },
+  "balanced": {
+    "policy": "word_level",
+    "human_code": "OTH",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 10,
+        "judge_code": "AFF",
+        "human_code": "OTH"
+      }
+    ]
+  },
+  "boundless": {
+    "policy": "word_level",
+    "human_code": "OTH",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 5,
+        "judge_code": "CAP",
+        "human_code": "OTH"
+      }
+    ]
+  },
+  "candid": {
+    "policy": "tuple_level",
+    "reason": "human coded this word inconsistently across validated tuples",
+    "n_validated_tuples": 2,
+    "per_tuple": {
+      "B_N10": {
+        "judge_code": "AFF",
+        "human_code": "AFF"
+      },
+      "B_N3": {
+        "judge_code": "AFF",
+        "human_code": "EPI"
+      }
+    }
+  },
+  "careful": {
+    "policy": "tuple_level",
+    "reason": "human coded this word inconsistently across validated tuples",
+    "n_validated_tuples": 2,
+    "per_tuple": {
+      "B_N10": {
+        "judge_code": "AFF",
+        "human_code": "HDG"
+      },
+      "A_N10": {
+        "judge_code": "AFF",
+        "human_code": "AFF"
+      }
+    }
+  },
+  "conversational": {
+    "policy": "word_level",
+    "human_code": "PRO",
+    "n_validated_tuples": 6,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 3,
+        "judge_code": "PRO",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "A",
+        "n": 10,
+        "judge_code": "PRO",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "B",
+        "n": 3,
+        "judge_code": "CAP",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "B",
+        "n": 5,
+        "judge_code": "CAP",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "B",
+        "n": 1,
+        "judge_code": "PRO",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "A",
+        "n": 5,
+        "judge_code": "PRO",
+        "human_code": "PRO"
+      }
+    ]
+  },
+  "curious": {
+    "policy": "tuple_level",
+    "reason": "human coded this word inconsistently across validated tuples",
+    "n_validated_tuples": 4,
+    "per_tuple": {
+      "A_N5": {
+        "judge_code": "EPI",
+        "human_code": "EPI"
+      },
+      "B_N3": {
+        "judge_code": "EPI",
+        "human_code": "EPI"
+      },
+      "B_N10": {
+        "judge_code": "EPI",
+        "human_code": "EPI"
+      },
+      "B_N5": {
+        "judge_code": "EPI",
+        "human_code": "AFF"
+      }
+    }
+  },
+  "direct": {
+    "policy": "word_level",
+    "human_code": "EPI",
+    "n_validated_tuples": 2,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 3,
+        "judge_code": "AFF",
+        "human_code": "EPI"
+      },
+      {
+        "framing": "A",
+        "n": 5,
+        "judge_code": "AFF",
+        "human_code": "EPI"
+      }
+    ]
+  },
+  "engaged": {
+    "policy": "word_level",
+    "human_code": "PRO",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 10,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      }
+    ]
+  },
+  "harmless": {
+    "policy": "word_level",
+    "human_code": "PRO",
+    "n_validated_tuples": 3,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 5,
+        "judge_code": "PRO",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "B",
+        "n": 10,
+        "judge_code": "PRO",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "B",
+        "n": 3,
+        "judge_code": "HDG",
+        "human_code": "PRO"
+      }
+    ]
+  },
+  "honest": {
+    "policy": "word_level",
+    "human_code": "PRO",
+    "n_validated_tuples": 5,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 5,
+        "judge_code": "PRO",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "B",
+        "n": 5,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "B",
+        "n": 10,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "A",
+        "n": 10,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "A",
+        "n": 3,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      }
+    ]
+  },
+  "impartial": {
+    "policy": "word_level",
+    "human_code": "PRO",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 10,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      }
+    ]
+  },
+  "informative": {
+    "policy": "word_level",
+    "human_code": "EPI",
+    "n_validated_tuples": 4,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 3,
+        "judge_code": "CAP",
+        "human_code": "EPI"
+      },
+      {
+        "framing": "B",
+        "n": 5,
+        "judge_code": "CAP",
+        "human_code": "EPI"
+      },
+      {
+        "framing": "A",
+        "n": 5,
+        "judge_code": "CAP",
+        "human_code": "EPI"
+      },
+      {
+        "framing": "A",
+        "n": 10,
+        "judge_code": "CAP",
+        "human_code": "EPI"
+      }
+    ]
+  },
+  "inquisitive": {
+    "policy": "tuple_level",
+    "reason": "human coded this word inconsistently across validated tuples",
+    "n_validated_tuples": 2,
+    "per_tuple": {
+      "A_N1": {
+        "judge_code": "EPI",
+        "human_code": "PRO"
+      },
+      "B_N5": {
+        "judge_code": "EPI",
+        "human_code": "EPI"
+      }
+    }
+  },
+  "language": {
+    "policy": "word_level",
+    "human_code": "OTH",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 10,
+        "judge_code": "IDM",
+        "human_code": "OTH"
+      }
+    ]
+  },
+  "large": {
+    "policy": "word_level",
+    "human_code": "IDM",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 10,
+        "judge_code": "CAP",
+        "human_code": "IDM"
+      }
+    ]
+  },
+  "multifaceted": {
+    "policy": "word_level",
+    "human_code": "OTH",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 1,
+        "judge_code": "CAP",
+        "human_code": "OTH"
+      }
+    ]
+  },
+  "non-judgmental": {
+    "policy": "word_level",
+    "human_code": "PRO",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 10,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      }
+    ]
+  },
+  "non-sentient": {
+    "policy": "word_level",
+    "human_code": "HDG",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 10,
+        "judge_code": "IDM",
+        "human_code": "HDG"
+      }
+    ]
+  },
+  "online": {
+    "policy": "word_level",
+    "human_code": "IDM",
+    "n_validated_tuples": 2,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 10,
+        "judge_code": "OTH",
+        "human_code": "IDM"
+      },
+      {
+        "framing": "B",
+        "n": 5,
+        "judge_code": "OTH",
+        "human_code": "IDM"
+      }
+    ]
+  },
+  "patient": {
+    "policy": "word_level",
+    "human_code": "PRO",
+    "n_validated_tuples": 3,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 10,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "A",
+        "n": 10,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      },
+      {
+        "framing": "A",
+        "n": 5,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      }
+    ]
+  },
+  "polite": {
+    "policy": "word_level",
+    "human_code": "PRO",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 5,
+        "judge_code": "AFF",
+        "human_code": "PRO"
+      }
+    ]
+  },
+  "precise": {
+    "policy": "word_level",
+    "human_code": "EPI",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 5,
+        "judge_code": "CAP",
+        "human_code": "EPI"
+      }
+    ]
+  },
+  "processing": {
+    "policy": "word_level",
+    "human_code": "EPI",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 10,
+        "judge_code": "CAP",
+        "human_code": "EPI"
+      }
+    ]
+  },
+  "responsive": {
+    "policy": "word_level",
+    "human_code": "PRO",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 5,
+        "judge_code": "CAP",
+        "human_code": "PRO"
+      }
+    ]
+  },
+  "user-focused": {
+    "policy": "word_level",
+    "human_code": "AFF",
+    "n_validated_tuples": 1,
+    "validated_tuples": [
+      {
+        "framing": "A",
+        "n": 10,
+        "judge_code": "PRO",
+        "human_code": "AFF"
+      }
+    ]
+  },
+  "vast": {
+    "policy": "word_level",
+    "human_code": "OTH",
+    "n_validated_tuples": 2,
+    "validated_tuples": [
+      {
+        "framing": "B",
+        "n": 5,
+        "judge_code": "CAP",
+        "human_code": "OTH"
+      },
+      {
+        "framing": "A",
+        "n": 5,
+        "judge_code": "CAP",
+        "human_code": "OTH"
+      }
+    ]
+  }
+}
