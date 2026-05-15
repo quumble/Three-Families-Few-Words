@@ -1,0 +1,222 @@
+call_id,family,tier,framing,n,truncated,parse_note,refusal_label,judge_raw
+google_flash_FA_N10_T00,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T01,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T02,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T03,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T04,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T05,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T06,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T07,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T08,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T09,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T10,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T11,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T12,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T13,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T14,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T15,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T16,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T17,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T18,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N10_T19,google,flash,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N3_T08,google,flash,A,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N3_T09,google,flash,A,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N3_T10,google,flash,A,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N3_T13,google,flash,A,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N3_T15,google,flash,A,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T00,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T02,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T03,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T04,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T05,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T06,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T08,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T09,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T10,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T11,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T12,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T13,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T14,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T15,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T16,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T17,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T18,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FA_N5_T19,google,flash,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T00,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T01,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T02,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T03,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T04,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T05,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T06,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T07,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T08,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T09,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T10,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T11,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T12,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T13,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T14,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T15,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T16,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T17,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T18,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N10_T19,google,flash,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N1_T19,google,flash,B,1,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N3_T01,google,flash,B,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N3_T05,google,flash,B,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N3_T06,google,flash,B,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N3_T11,google,flash,B,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N3_T19,google,flash,B,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T00,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T01,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T02,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T03,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T04,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T05,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T06,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T07,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T08,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T09,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T10,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T11,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T12,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T13,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T14,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T15,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T16,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T17,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T18,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_flash_FB_N5_T19,google,flash,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T00,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T01,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T02,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T03,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T04,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T05,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T06,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T07,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T08,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T09,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T10,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T11,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T12,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T13,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T14,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T15,google,pro,A,10,False,"wrong token count: got 3, expected 10",MALFORMED,MALFORMED
+google_pro_FA_N10_T16,google,pro,A,10,False,no commas in multi-word response,MALFORMED,MALFORMED
+google_pro_FA_N10_T17,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T18,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N10_T19,google,pro,A,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N1_T10,google,pro,A,1,False,"wrong token count: got 3, expected 1",MALFORMED,MALFORMED
+google_pro_FA_N3_T00,google,pro,A,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N3_T02,google,pro,A,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N3_T03,google,pro,A,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N3_T09,google,pro,A,3,False,"wrong token count: got 2, expected 3",MALFORMED,MALFORMED
+google_pro_FA_N3_T12,google,pro,A,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N3_T19,google,pro,A,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T00,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T01,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T02,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T03,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T04,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T05,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T06,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T07,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T08,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T09,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T10,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T11,google,pro,A,5,False,"wrong token count: got 4, expected 5",MALFORMED,MALFORMED
+google_pro_FA_N5_T12,google,pro,A,5,False,"wrong token count: got 4, expected 5",MALFORMED,MALFORMED
+google_pro_FA_N5_T13,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T14,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T15,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T16,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T17,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T18,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FA_N5_T19,google,pro,A,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T00,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T01,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T02,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T03,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T04,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T05,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T06,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T07,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T08,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T09,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T10,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T11,google,pro,B,10,False,"wrong token count: got 4, expected 10",MALFORMED,MALFORMED
+google_pro_FB_N10_T12,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T13,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T14,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T15,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T16,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T17,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N10_T18,google,pro,B,10,False,"wrong token count: got 1, expected 10",MALFORMED,MALFORMED
+google_pro_FB_N10_T19,google,pro,B,10,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N1_T13,google,pro,B,1,False,"wrong token count: got 2, expected 1",MALFORMED,MALFORMED
+google_pro_FB_N3_T02,google,pro,B,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N3_T04,google,pro,B,3,False,"wrong token count: got 2, expected 3",MALFORMED,MALFORMED
+google_pro_FB_N3_T06,google,pro,B,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N3_T09,google,pro,B,3,False,"wrong token count: got 2, expected 3",MALFORMED,MALFORMED
+google_pro_FB_N3_T11,google,pro,B,3,False,"wrong token count: got 2, expected 3",MALFORMED,MALFORMED
+google_pro_FB_N3_T12,google,pro,B,3,False,"wrong token count: got 2, expected 3",MALFORMED,MALFORMED
+google_pro_FB_N3_T16,google,pro,B,3,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T00,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T01,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T02,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T03,google,pro,B,5,False,"wrong token count: got 4, expected 5",MALFORMED,MALFORMED
+google_pro_FB_N5_T04,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T05,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T06,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T07,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T08,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T09,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T10,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T11,google,pro,B,5,False,"wrong token count: got 2, expected 5",MALFORMED,MALFORMED
+google_pro_FB_N5_T12,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T13,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T14,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T15,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T16,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T17,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T18,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+google_pro_FB_N5_T19,google,pro,B,5,True,truncated (finish=MAX_TOKENS),MALFORMED,MALFORMED
+openai_nano_FA_N10_T01,openai,nano,A,10,False,"wrong token count: got 9, expected 10",MALFORMED,MALFORMED
+openai_nano_FA_N10_T03,openai,nano,A,10,False,"wrong token count: got 7, expected 10",MALFORMED,MALFORMED
+openai_nano_FA_N10_T06,openai,nano,A,10,False,"wrong token count: got 9, expected 10",MALFORMED,MALFORMED
+openai_nano_FA_N10_T10,openai,nano,A,10,False,"wrong token count: got 4, expected 10",MALFORMED,MALFORMED
+openai_nano_FA_N10_T12,openai,nano,A,10,False,"wrong token count: got 7, expected 10",MALFORMED,MALFORMED
+openai_nano_FA_N10_T13,openai,nano,A,10,False,"wrong token count: got 9, expected 10",MALFORMED,MALFORMED
+openai_nano_FA_N10_T16,openai,nano,A,10,False,"wrong token count: got 9, expected 10",MALFORMED,MALFORMED
+openai_nano_FA_N10_T18,openai,nano,A,10,False,"wrong token count: got 8, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T00,openai,nano,B,10,False,"wrong token count: got 5, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T01,openai,nano,B,10,False,"wrong token count: got 2, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T02,openai,nano,B,10,False,"wrong token count: got 2, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T03,openai,nano,B,10,False,"wrong token count: got 2, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T04,openai,nano,B,10,False,"wrong token count: got 5, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T05,openai,nano,B,10,False,"wrong token count: got 2, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T06,openai,nano,B,10,False,"wrong token count: got 4, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T07,openai,nano,B,10,False,"wrong token count: got 2, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T08,openai,nano,B,10,False,"wrong token count: got 2, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T09,openai,nano,B,10,False,"wrong token count: got 3, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T10,openai,nano,B,10,False,"wrong token count: got 4, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T11,openai,nano,B,10,False,"wrong token count: got 5, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T12,openai,nano,B,10,False,"wrong token count: got 2, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T13,openai,nano,B,10,False,"wrong token count: got 3, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T14,openai,nano,B,10,False,"wrong token count: got 2, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T15,openai,nano,B,10,False,"wrong token count: got 5, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T16,openai,nano,B,10,False,"wrong token count: got 5, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T17,openai,nano,B,10,False,"wrong token count: got 2, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T18,openai,nano,B,10,False,"wrong token count: got 5, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N10_T19,openai,nano,B,10,False,"wrong token count: got 2, expected 10",MALFORMED,MALFORMED
+openai_nano_FB_N3_T17,openai,nano,B,3,False,no commas in multi-word response,MALFORMED,MALFORMED
+openai_nano_FB_N5_T01,openai,nano,B,5,False,"wrong token count: got 4, expected 5",MALFORMED,MALFORMED
+openai_nano_FB_N5_T07,openai,nano,B,5,False,"wrong token count: got 2, expected 5",MALFORMED,MALFORMED
+openai_nano_FB_N5_T08,openai,nano,B,5,False,"wrong token count: got 2, expected 5",MALFORMED,MALFORMED
+openai_nano_FB_N5_T09,openai,nano,B,5,False,"wrong token count: got 4, expected 5",MALFORMED,MALFORMED
+openai_nano_FB_N5_T10,openai,nano,B,5,False,"wrong token count: got 2, expected 5",MALFORMED,MALFORMED
+openai_nano_FB_N5_T12,openai,nano,B,5,False,"wrong token count: got 4, expected 5",MALFORMED,MALFORMED
+openai_nano_FB_N5_T18,openai,nano,B,5,False,"wrong token count: got 2, expected 5",MALFORMED,MALFORMED
+openai_nano_FB_N5_T19,openai,nano,B,5,False,"wrong token count: got 2, expected 5",MALFORMED,MALFORMED
