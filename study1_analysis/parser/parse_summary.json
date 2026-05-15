@@ -1,0 +1,30 @@
+{
+  "pilot": {
+    "input_path": "/home/claude/three_families/three_families/three-families-few-words/study1/data/raw/responses_pilot.jsonl",
+    "rows_read": 160,
+    "rows_failed_call": 16,
+    "parse_status_counts": {
+      "clean": 118,
+      "wrapped": 4,
+      "malformed": 38
+    },
+    "truncated_count": 16,
+    "words_written": 523,
+    "duplicate_call_ids_seen": 16,
+    "seen_call_ids": []
+  },
+  "main": {
+    "input_path": "/home/claude/three_families/three_families/three-families-few-words/study1/data/raw/responses_main.jsonl",
+    "rows_read": 1440,
+    "rows_failed_call": 0,
+    "parse_status_counts": {
+      "clean": 1179,
+      "wrapped": 40,
+      "malformed": 221
+    },
+    "truncated_count": 169,
+    "words_written": 5255,
+    "duplicate_call_ids_seen": 0,
+    "seen_call_ids": []
+  }
+}
