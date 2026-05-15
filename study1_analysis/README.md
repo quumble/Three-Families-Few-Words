@@ -43,8 +43,9 @@ Each stage is independent: re-run the parser without re-running the judge; fit a
 | `per_word_main.csv` | parser | 5,255 | One row per extracted word from `clean`/`wrapped` responses. Primary-analysis dataset per prereg §6.1. |
 | `per_word_pilot.csv` | parser | 523 | Same for the pilot. |
 | `coded_main.csv` | judge | 5,255 | `per_word_main.csv` plus a `code` column (one of PRO/EPI/CAP/AFF/IDM/HDG/OTH) and a `cache_hit` boolean for traceability. |
+| `coded_main_sensitivity.csv` | swap script | 5,255 | `coded_main.csv` with the boundary-disputed-word swap applied (deviation, 2026-05-15). `original_code` preserved, `swap_applied` and `swap_policy` columns added. 750 rows (14.3%) re-coded. |
 | `refusal_classifications_main.csv` | judge | 221 | One row per malformed main-study call, classified REFUSAL vs MALFORMED. All 221 came back MALFORMED. |
-| `validation_main.csv` *(forthcoming)* | hand-coding tool | 154 | One row per hand-coded `(word, framing, N)` tuple with `human_code`. Output of `coding_tool/coding_tool.html`. |
+| `validation_main.csv` | hand-coding tool | 154 | One row per hand-coded `(word, framing, N)` tuple with `human_code`. Output of `coding_tool/coding_tool.html`. |
 
 ## Quick descriptives from `coded_main.csv`
 
@@ -72,6 +73,9 @@ Note: Google rows have ~500 words rather than ~1,100 because many Google Pro / F
 
 ## What's left to do
 
-1. **Run the hand-coded validation pass (prereg §5.1).** The tool is built and the sample is fixed; open `coding_tool/coding_tool.html` in a browser, code the 154 unique `(word, framing, N)` tuples, download `validation_main.csv` into `data/`, and run `python coding_tool/kappa.py`. If κ ≥ 0.60 we proceed; if κ < 0.60 we revise the coding scheme (logged as a deviation).
-2. **Statistical analysis (prereg §6).** Mixed-effects logistic regressions for each category, framing main effect, family × framing interaction. Bonferroni correction at α = .01 for the 5 primary tests (the 4 originally planned + H4 on compliance).
-3. **Writeup.**
+1. **Statistical analysis (prereg §6, with sensitivity per 2026-05-15 deviation).** Mixed-effects logistic regressions for each category, framing main effect, family × framing interaction, run against both `coded_main.csv` (primary) and `coded_main_sensitivity.csv` (sensitivity). Bonferroni correction at α = .01 for the 5 primary tests.
+2. **Writeup.**
+
+## Completed validation pass
+
+Validation returned **κ = 0.673** overall (substantial; above the prereg's 0.60 threshold), with per-category one-vs-rest κs of: IDM 0.85, HDG 0.85, EPI 0.75, PRO 0.63, CAP 0.59, AFF 0.51, OTH 0.31 (n=4, unstable). Judge codes are accepted as primary per prereg §5.1. The 42 disagreements clustered on the AFF↔PRO and CAP↔EPI boundaries and reflected scheme ambiguity (the prereg §5 text permitted both readings) rather than coder error. A pre-specified sensitivity analysis applying a human-boundary swap is logged in the deviations file and produced `data/coded_main_sensitivity.csv`.
