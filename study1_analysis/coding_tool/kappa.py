@@ -180,7 +180,12 @@ def main() -> None:
         "kappa_threshold": 0.60,
         "judge_accepted_by_threshold": (overall_k >= 0.60) if overall_k == overall_k else None,
         "per_category": per_cat,
-        "confusion_matrix_rows_judge_cols_human": cm.to_dict(),
+        # to_dict() defaults to orient="dict" which is column-major; outer keys
+        # would be column labels (human) and inner keys row labels (judge),
+        # which contradicts the field name. orient="index" makes outer keys
+        # row labels (judge), inner keys column labels (human) — matching the
+        # field name and the printed table above.
+        "confusion_matrix_rows_judge_cols_human": cm.to_dict(orient="index"),
         "n_disagreements": len(disagrees),
     }
     SUMMARY_OUT.write_text(json.dumps(summary, indent=2))

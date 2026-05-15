@@ -69,63 +69,63 @@
     "PRO": {
       "PRO": 24,
       "EPI": 1,
-      "CAP": 3,
-      "AFF": 11,
-      "IDM": 0,
-      "HDG": 1,
+      "CAP": 0,
+      "AFF": 1,
+      "IDM": 2,
+      "HDG": 0,
       "OTH": 0
     },
     "EPI": {
       "PRO": 1,
       "EPI": 26,
-      "CAP": 7,
-      "AFF": 3,
+      "CAP": 0,
+      "AFF": 1,
       "IDM": 0,
       "HDG": 0,
       "OTH": 0
     },
     "CAP": {
-      "PRO": 0,
-      "EPI": 0,
+      "PRO": 3,
+      "EPI": 7,
       "CAP": 13,
       "AFF": 0,
-      "IDM": 0,
+      "IDM": 1,
       "HDG": 0,
-      "OTH": 0
+      "OTH": 4
     },
     "AFF": {
-      "PRO": 1,
-      "EPI": 1,
+      "PRO": 11,
+      "EPI": 3,
       "CAP": 0,
       "AFF": 12,
       "IDM": 0,
-      "HDG": 0,
-      "OTH": 0
+      "HDG": 1,
+      "OTH": 1
     },
     "IDM": {
-      "PRO": 2,
-      "EPI": 0,
-      "CAP": 1,
-      "AFF": 0,
-      "IDM": 26,
-      "HDG": 0,
-      "OTH": 2
-    },
-    "HDG": {
       "PRO": 0,
       "EPI": 0,
       "CAP": 0,
-      "AFF": 1,
-      "IDM": 1,
+      "AFF": 0,
+      "IDM": 26,
+      "HDG": 1,
+      "OTH": 1
+    },
+    "HDG": {
+      "PRO": 1,
+      "EPI": 0,
+      "CAP": 0,
+      "AFF": 0,
+      "IDM": 0,
       "HDG": 9,
       "OTH": 0
     },
     "OTH": {
       "PRO": 0,
       "EPI": 0,
-      "CAP": 4,
-      "AFF": 1,
-      "IDM": 1,
+      "CAP": 0,
+      "AFF": 0,
+      "IDM": 2,
       "HDG": 0,
       "OTH": 2
     }
