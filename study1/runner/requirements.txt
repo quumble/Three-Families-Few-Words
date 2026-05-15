@@ -1,5 +1,8 @@
-# Pinned dependencies for the runner.
-# Update versions as needed and commit any change to lock reproducibility.
+# Minimum versions for the runner.
+# These are floors, not pins. Newer versions of these SDKs that preserve the
+# Messages / Responses / google-genai surface used in run.py are expected to
+# work. If a future SDK release breaks something, pin the version that worked
+# and log the change in study1/prereg/deviations.md.
 
 anthropic>=0.40.0
 openai>=1.40.0
