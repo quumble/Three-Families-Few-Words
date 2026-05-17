@@ -33,18 +33,21 @@ source("_setup.R")
 primary_script <- file.path(HERE, "01_primary.R")
 primary_lines  <- readLines(primary_script)
 
-# Locate the "Run both datasets" section header explicitly rather than
-# hardcoding a line number, so this stays robust to edits in 01_primary.R.
-run_section_start <- grep("^## --- Run both datasets", primary_lines)
-if (length(run_section_start) != 1) {
-  stop("Could not locate the 'Run both datasets' section marker in 01_primary.R. ",
+# Find the first executable line. The function-definition block runs from
+# line 1 up to the line just before this one. Using the first real executable
+# statement as the anchor is more robust than matching comment headers, since
+# comment formatting is more likely to drift than the executable code.
+exec_start <- grep("^primary_df\\s*<-\\s*load_coded", primary_lines)
+if (length(exec_start) != 1) {
+  stop("Could not locate the first executable line ",
+       "(`primary_df <- load_coded(...)`) in 01_primary.R. ",
        "If that script has been restructured, update this loader.")
 }
 
-defs_only <- primary_lines[seq_len(run_section_start - 1L)]
+defs_only <- primary_lines[seq_len(exec_start - 1L)]
 eval(parse(text = paste(defs_only, collapse = "\n")), envir = globalenv())
 cat("Sourced function definitions from 01_primary.R (lines 1 to ",
-    run_section_start - 1L, ")\n", sep = "")
+    exec_start - 1L, ")\n", sep = "")
 
 ## --- Load the data and apply the §8 filter -------------------------------
 
