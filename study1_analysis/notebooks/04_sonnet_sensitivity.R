@@ -49,6 +49,24 @@ eval(parse(text = paste(defs_only, collapse = "\n")), envir = globalenv())
 cat("Sourced function definitions from 01_primary.R (lines 1 to ",
     exec_start - 1L, ")\n", sep = "")
 
+# `flatten_results` happens to be defined further down in 01_primary.R, mixed
+# with execution code, so it does not come along with the slice above. Define
+# it locally — kept byte-identical to the version in 01_primary.R so any
+# future change to that script's row schema can be mirrored here verbatim.
+flatten_results <- function(run_list) {
+  do.call(rbind, lapply(run_list$results, function(r) {
+    cols <- c("dataset", "test", "kind", "coefficient", "estimate",
+              "std_error", "z", "chi2", "df", "p_value",
+              "threshold", "significant",
+              "direction_predicted", "direction_observed",
+              "AIC_full", "AIC_reduced",
+              "engine", "re_structure", "warnings", "note")
+    row <- as.list(setNames(rep(NA, length(cols)), cols))
+    for (nm in intersect(names(r), cols)) row[[nm]] <- r[[nm]]
+    as.data.frame(row, stringsAsFactors = FALSE)
+  }))
+}
+
 ## --- Load the data and apply the §8 filter -------------------------------
 
 banner("§8 Sonnet-as-judge sensitivity")
