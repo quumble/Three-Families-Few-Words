@@ -1,0 +1,69 @@
+# Variance components — extracted from primary_models.rds at 2026-05-16 19:59:03.419977
+#
+# Source: study1_analysis/notebooks/output/primary_models.rds
+# Produced by:   study1_analysis/notebooks/02_variance_components.R
+# Singular flag threshold: variance < 1e-08
+
+======================================================================
+Dataset: primary
+======================================================================
+
+--- H1-PRO.full   (engine = glmmTMB) ---
+    model_id                  variance = 0.000000
+    trial_id                  variance = 0.000000    <-- SINGULAR (≈ 0)
+
+--- H1-PRO.reduced   (engine = glmmTMB) ---
+    model_id                  variance = 0.040495
+    trial_id                  variance = 0.000000    <-- SINGULAR (≈ 0)
+
+--- H1-IDM.full   (engine = glmmTMB) ---
+    model_id                  variance = 3.263230
+    trial_id                  variance = 0.000000    <-- SINGULAR (≈ 0)
+
+--- H1-IDM.reduced   (engine = glmmTMB) ---
+    model_id                  variance = 2.722245
+    trial_id                  variance = 0.000000    <-- SINGULAR (≈ 0)
+
+--- H2-AFF.full   (engine = glmmTMB) ---
+    model_id                  variance = 0.405741
+    trial_id                  variance = 0.000000    <-- SINGULAR (≈ 0)
+
+--- H4-compliance.full   (engine = glmmTMB) ---
+    model_id                  variance = 60.410127
+
+--- H4-compliance.reduced   (engine = glmmTMB) ---
+    model_id                  variance = 240.295610
+
+======================================================================
+Dataset: sensitivity
+======================================================================
+
+--- H1-PRO.full   (engine = glmmTMB) ---
+    model_id                  variance = 0.002592
+    trial_id                  variance = 0.000000    <-- SINGULAR (≈ 0)
+
+--- H1-PRO.reduced   (engine = glmmTMB) ---
+    model_id                  variance = 0.182879
+    trial_id                  variance = 0.000000    <-- SINGULAR (≈ 0)
+
+--- H1-IDM.full   (engine = glmmTMB) ---
+    model_id                  variance = 3.158254
+    trial_id                  variance = 0.000000    <-- SINGULAR (≈ 0)
+
+--- H1-IDM.reduced   (engine = glmmTMB) ---
+    model_id                  variance = 2.644245
+    trial_id                  variance = 0.000000    <-- SINGULAR (≈ 0)
+
+--- H2-AFF.full   (engine = glmmTMB) ---
+    model_id                  variance = 0.575348
+    trial_id                  variance = 0.000000    <-- SINGULAR (≈ 0)
+
+--- H4-compliance.full   (engine = glmmTMB) ---
+    model_id                  variance = 60.410127
+
+--- H4-compliance.reduced   (engine = glmmTMB) ---
+    model_id                  variance = 240.295610
+
+----------------------------------------------------------------------
+Total variance components at zero (variance < 1e-08): 10
+----------------------------------------------------------------------
