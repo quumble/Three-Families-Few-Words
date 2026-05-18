@@ -3,6 +3,9 @@
 This is where the inferential analyses and figures live. The split mirrors the prereg's confirmatory/exploratory split:
 
 - `01_primary.R` is the **locked confirmatory artifact**. It runs the 5 primary tests (per prereg §6.2 + the 2026-05-10 and 2026-05-15 deviations) against both `coded_main.csv` and `coded_main_sensitivity.csv`, producing a reproducible results CSV. It is run as a script, not edited interactively.
+- `04_sonnet_sensitivity.R` discharges the prereg §8 commitment — *"we will also report what happens if we drop Sonnet-coded words for cells where Sonnet is the subject."* It sources the function definitions from `01_primary.R`, drops the 760 word-rows where the subject model is `claude-sonnet-4-6`, and re-runs the category tests on both datasets. H4 is not re-run (the compliance outcome is independent of word-level coding).
+- `02_variance_components.R` is a small standalone script that loads `primary_models.rds` and dumps the variance components per random-effects term per fit.
+- `03_h1_pro_diagnostic.R` is a follow-up diagnostic on the H1-PRO fit; not part of the confirmatory battery.
 - `02_descriptives.Rmd` (TODO) is for descriptives, §6.3 secondary analyses, figures. Iterative, evolves with the writeup.
 
 ## Files
@@ -11,10 +14,17 @@ This is where the inferential analyses and figures live. The split mirrors the p
 |---|---|---|
 | `_setup.R` | done | Common environment: packages, paths, factor levels, loader functions |
 | `01_primary.R` | done | The 5 primary tests × 2 datasets, locked |
+| `02_variance_components.R` | done | Extracts RE variance components from `primary_models.rds` |
+| `03_h1_pro_diagnostic.R` | done | Diagnostic follow-up on the H1-PRO fit |
+| `04_sonnet_sensitivity.R` | done | Prereg §8 — re-runs the category tests with judge-as-subject rows dropped |
 | `02_descriptives.Rmd` | TODO | Cell-level descriptives, §6.3 secondary analyses, figures |
 | `output/primary_results.csv` | written by 01 | Flat results table — one row per test × dataset |
 | `output/primary_models.rds` | written by 01 | Fitted model objects for inspection |
 | `output/primary_session.txt` | written by 01 | `sessionInfo()` dump for reproducibility |
+| `output/variance_components.txt` | written by 02 | RE variance components per fit |
+| `output/sonnet_sensitivity_results.csv` | written by 04 | Flat results table for the §8 sensitivity (H4 excluded; see header of 04) |
+| `output/sonnet_sensitivity_models.rds` | written by 04 | Fitted model objects from the §8 sensitivity |
+| `output/sonnet_sensitivity_session.txt` | written by 04 | `sessionInfo()` dump for the §8 sensitivity run |
 
 ## Running the primary analysis
 
@@ -28,10 +38,12 @@ Then from the notebooks directory:
 
 ```powershell
 cd study1_analysis\notebooks
-Rscript 01_primary.R
+Rscript 01_primary.R           # 5 primary tests on both datasets
+Rscript 04_sonnet_sensitivity.R  # §8 sensitivity (drops judge-as-subject rows)
+Rscript 02_variance_components.R # extracts RE variances from primary_models.rds
 ```
 
-The script writes everything to `output/`. The terminal output ends with a compact summary table — five rows, p-values, threshold, significance.
+`01_primary.R` writes everything to `output/`. Its terminal output ends with a compact summary table — five rows, p-values, threshold, significance. `04_sonnet_sensitivity.R` prints its own compact summary with the same schema (minus H4) so you can compare row-for-row against `primary_results.csv`.
 
 ## The five primary tests
 
