@@ -4,7 +4,10 @@
 ## consistent and the loaded versions are recorded.
 
 # Required packages. If any are missing, install with:
-#   install.packages(c("readr", "dplyr", "tidyr", "glmmTMB", "lme4", "broom.mixed"))
+#   install.packages(c("readr", "dplyr", "tidyr", "glmmTMB", "lme4",
+#                      "broom.mixed", "ggplot2", "scales"))
+# (ggplot2 + scales are only used by 02_figures.R; sourcing this file from
+# the inferential scripts will load them too but never call them.)
 suppressPackageStartupMessages({
   library(readr)        # fast CSV
   library(dplyr)        # data manipulation
@@ -12,6 +15,8 @@ suppressPackageStartupMessages({
   library(glmmTMB)      # primary mixed-effects engine (more stable than lme4 for sparse outcomes)
   library(lme4)         # fallback engine + likelihood-ratio testing utilities
   library(broom.mixed)  # tidy() for mixed-effects model output
+  library(ggplot2)      # figures (02_figures.R)
+  library(scales)       # axis formatters for figures
 })
 
 ## --- Path constants --------------------------------------------------------
@@ -33,6 +38,41 @@ CATEGORIES <- c("PRO", "EPI", "CAP", "AFF", "IDM", "HDG", "OTH")
 FAMILIES   <- c("anthropic", "openai", "google")
 FRAMINGS   <- c("A", "B")
 NS         <- c(1L, 3L, 5L, 10L)
+
+## --- Display / palette ----------------------------------------------------
+## Used by 02_figures.R only. Three families, three colors. Colorblind-safe
+## (Okabe-Ito): orange for anthropic, blue for openai, vermillion for google.
+## These are chosen so anthropic + google are easily distinguishable for the
+## ~7% of male readers with red-green deficiency.
+
+FAMILY_COLORS <- c(
+  anthropic = "#E69F00",  # orange
+  openai    = "#56B4E9",  # sky blue
+  google    = "#D55E00"   # vermillion
+)
+
+CATEGORY_COLORS <- c(
+  PRO = "#4daf4a",  # green
+  EPI = "#377eb8",  # blue
+  CAP = "#984ea3",  # purple
+  AFF = "#ff7f00",  # orange
+  IDM = "#e41a1c",  # red
+  HDG = "#a65628",  # brown
+  OTH = "#999999"   # grey
+)
+
+# Display labels for noisy model IDs in figures (kept short for legends).
+MODEL_DISPLAY <- c(
+  "claude-haiku-4-5"            = "Haiku 4.5",
+  "claude-sonnet-4-6"           = "Sonnet 4.6",
+  "claude-opus-4-7"             = "Opus 4.7",
+  "gpt-5.4-nano-2026-03-17"     = "GPT-5.4 nano",
+  "gpt-5.4-mini-2026-03-17"     = "GPT-5.4 mini",
+  "gpt-5.4-2026-03-05"          = "GPT-5.4",
+  "gemini-3.1-flash-lite"       = "Gemini 3.1 Flash-Lite",
+  "gemini-3-flash-preview"      = "Gemini 3 Flash",
+  "gemini-3.1-pro-preview"      = "Gemini 3.1 Pro"
+)
 
 ## --- Loader functions ------------------------------------------------------
 
