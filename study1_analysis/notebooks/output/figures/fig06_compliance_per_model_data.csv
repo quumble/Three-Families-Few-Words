@@ -1,0 +1,10 @@
+family,model_id_sent,n_compliant,n_total,rate,display
+anthropic,claude-haiku-4-5,160,160,1,Haiku 4.5
+anthropic,claude-opus-4-7,160,160,1,Opus 4.7
+anthropic,claude-sonnet-4-6,160,160,1,Sonnet 4.6
+openai,gpt-5.4-2026-03-05,160,160,1,GPT-5.4
+openai,gpt-5.4-mini-2026-03-17,160,160,1,GPT-5.4 mini
+openai,gpt-5.4-nano-2026-03-17,123,160,0.76875,GPT-5.4 nano
+google,gemini-3.1-flash-lite,160,160,1,Gemini 3.1 Flash-Lite
+google,gemini-3-flash-preview,71,160,0.44375,Gemini 3 Flash
+google,gemini-3.1-pro-preview,65,160,0.40625,Gemini 3.1 Pro

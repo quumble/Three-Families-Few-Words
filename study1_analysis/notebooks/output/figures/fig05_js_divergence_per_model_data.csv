@@ -1,0 +1,19 @@
+flavor,model_id,js_dist,note,family,display
+category,claude-haiku-4-5,0.2861772713337839,"family=anthropic; n_A_words=380; n_B_words=380; JS uses log base 2 → bounded in [0, 1]",anthropic,Haiku 4.5
+category,claude-opus-4-7,0.18442993859530313,"family=anthropic; n_A_words=380; n_B_words=380; JS uses log base 2 → bounded in [0, 1]",anthropic,Opus 4.7
+category,claude-sonnet-4-6,0.09944206111597514,"family=anthropic; n_A_words=380; n_B_words=380; JS uses log base 2 → bounded in [0, 1]",anthropic,Sonnet 4.6
+category,gemini-3-flash-preview,0.17606063618965503,"family=google; n_A_words=75; n_B_words=64; JS uses log base 2 → bounded in [0, 1]",google,Gemini 3 Flash
+category,gemini-3.1-flash-lite,0.20476635099930207,"family=google; n_A_words=380; n_B_words=380; JS uses log base 2 → bounded in [0, 1]",google,Gemini 3.1 Flash-Lite
+category,gemini-3.1-pro-preview,0.09606314118684976,"family=google; n_A_words=61; n_B_words=58; JS uses log base 2 → bounded in [0, 1]",google,Gemini 3.1 Pro
+category,gpt-5.4-2026-03-05,0.2269755000363577,"family=openai; n_A_words=380; n_B_words=380; JS uses log base 2 → bounded in [0, 1]",openai,GPT-5.4
+category,gpt-5.4-mini-2026-03-17,0.09000256995561029,"family=openai; n_A_words=380; n_B_words=380; JS uses log base 2 → bounded in [0, 1]",openai,GPT-5.4 mini
+category,gpt-5.4-nano-2026-03-17,0.4927609753043884,"family=openai; n_A_words=300; n_B_words=137; JS uses log base 2 → bounded in [0, 1]",openai,GPT-5.4 nano
+word,claude-haiku-4-5,0.4543739354954341,family=anthropic; n_A_words=380; n_B_words=380; Laplace smoothing over union of A+B vocabularies,anthropic,Haiku 4.5
+word,claude-opus-4-7,0.2711521794960312,family=anthropic; n_A_words=380; n_B_words=380; Laplace smoothing over union of A+B vocabularies,anthropic,Opus 4.7
+word,claude-sonnet-4-6,0.4094011478368531,family=anthropic; n_A_words=380; n_B_words=380; Laplace smoothing over union of A+B vocabularies,anthropic,Sonnet 4.6
+word,gemini-3-flash-preview,0.28243135211646897,family=google; n_A_words=75; n_B_words=64; Laplace smoothing over union of A+B vocabularies,google,Gemini 3 Flash
+word,gemini-3.1-flash-lite,0.3678411817356958,family=google; n_A_words=380; n_B_words=380; Laplace smoothing over union of A+B vocabularies,google,Gemini 3.1 Flash-Lite
+word,gemini-3.1-pro-preview,0.2550135659502795,family=google; n_A_words=61; n_B_words=58; Laplace smoothing over union of A+B vocabularies,google,Gemini 3.1 Pro
+word,gpt-5.4-2026-03-05,0.4374203722663587,family=openai; n_A_words=380; n_B_words=380; Laplace smoothing over union of A+B vocabularies,openai,GPT-5.4
+word,gpt-5.4-mini-2026-03-17,0.23992082878743495,family=openai; n_A_words=380; n_B_words=380; Laplace smoothing over union of A+B vocabularies,openai,GPT-5.4 mini
+word,gpt-5.4-nano-2026-03-17,0.5750534655876064,family=openai; n_A_words=300; n_B_words=137; Laplace smoothing over union of A+B vocabularies,openai,GPT-5.4 nano

@@ -1,0 +1,25 @@
+dataset,family,framing,n,n_tokens,n_types,ttr,ttr_root
+both (primary == sensitivity row-wise),anthropic,A,1,60,2,0.03333333333333333,0.2581988897471611
+both (primary == sensitivity row-wise),anthropic,A,3,180,9,0.05,0.6708203932499369
+both (primary == sensitivity row-wise),anthropic,A,5,300,19,0.06333333333333334,1.0969655114602888
+both (primary == sensitivity row-wise),anthropic,A,10,600,36,0.06,1.469693845669907
+both (primary == sensitivity row-wise),anthropic,B,1,60,3,0.05,0.3872983346207417
+both (primary == sensitivity row-wise),anthropic,B,3,180,17,0.09444444444444444,1.2671051872498809
+both (primary == sensitivity row-wise),anthropic,B,5,300,24,0.08,1.3856406460551016
+both (primary == sensitivity row-wise),anthropic,B,10,600,63,0.105,2.571964229922337
+both (primary == sensitivity row-wise),openai,A,1,60,7,0.11666666666666667,0.9036961141150639
+both (primary == sensitivity row-wise),openai,A,3,180,11,0.06111111111111111,0.8198915917499229
+both (primary == sensitivity row-wise),openai,A,5,300,22,0.07333333333333333,1.2701705922171767
+both (primary == sensitivity row-wise),openai,A,10,520,44,0.08461538461538462,1.9295276424754644
+both (primary == sensitivity row-wise),openai,B,1,60,9,0.15,1.161895003862225
+both (primary == sensitivity row-wise),openai,B,3,177,22,0.12429378531073447,1.6536212616062236
+both (primary == sensitivity row-wise),openai,B,5,260,26,0.1,1.61245154965971
+both (primary == sensitivity row-wise),openai,B,10,400,33,0.0825,1.65
+both (primary == sensitivity row-wise),google,A,1,59,6,0.1016949152542373,0.7811334658849433
+both (primary == sensitivity row-wise),google,A,3,147,10,0.06802721088435375,0.8247860988423226
+both (primary == sensitivity row-wise),google,A,5,110,12,0.10909090909090909,1.1441551070947107
+both (primary == sensitivity row-wise),google,A,10,200,26,0.13,1.8384776310850235
+both (primary == sensitivity row-wise),google,B,1,58,6,0.10344827586206896,0.7878385971583353
+both (primary == sensitivity row-wise),google,B,3,144,15,0.10416666666666667,1.25
+both (primary == sensitivity row-wise),google,B,5,100,11,0.11,1.1
+both (primary == sensitivity row-wise),google,B,10,200,32,0.16,2.262741699796952
