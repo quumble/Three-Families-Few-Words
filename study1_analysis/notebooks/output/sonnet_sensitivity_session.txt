@@ -1,0 +1,45 @@
+# Session info — written by 04_sonnet_sensitivity.R at 2026-05-16 21:46:06.067979
+
+R version 4.6.0 (2026-04-24 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+
+Matrix products: default
+  LAPACK version 3.12.1
+
+locale:
+[1] LC_COLLATE=English_United States.utf8 
+[2] LC_CTYPE=English_United States.utf8   
+[3] LC_MONETARY=English_United States.utf8
+[4] LC_NUMERIC=C                          
+[5] LC_TIME=English_United States.utf8    
+
+time zone: America/New_York
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] broom.mixed_0.2.9.7 lme4_2.0-1          Matrix_1.7-5       
+[4] glmmTMB_1.1.14      tidyr_1.3.2         dplyr_1.2.1        
+[7] readr_2.2.0        
+
+loaded via a namespace (and not attached):
+ [1] sandwich_3.1-1      future_1.70.0       generics_0.1.4     
+ [4] lattice_0.22-9      listenv_0.10.1      hms_1.1.4          
+ [7] digest_0.6.39       magrittr_2.0.5      grid_4.6.0         
+[10] backports_1.5.1     mgcv_1.9-4          purrr_1.2.2        
+[13] codetools_0.2-20    numDeriv_2016.8-1.1 reformulas_0.4.4   
+[16] Rdpack_2.6.6        cli_3.6.6           crayon_1.5.3       
+[19] rlang_1.2.0         rbibutils_2.4.1     parallelly_1.47.0  
+[22] bit64_4.8.0         splines_4.6.0       tools_4.6.0        
+[25] parallel_4.6.0      tzdb_0.5.0          nloptr_2.2.1       
+[28] minqa_1.2.8         forcats_1.0.1       boot_1.3-32        
+[31] globals_0.19.1      broom_1.0.13        vctrs_0.7.3        
+[34] R6_2.6.1            stats4_4.6.0        zoo_1.8-15         
+[37] lifecycle_1.0.5     bit_4.6.0           vroom_1.7.1        
+[40] MASS_7.3-65         furrr_0.4.0         pkgconfig_2.0.3    
+[43] pillar_1.11.1       glue_1.8.1          Rcpp_1.1.1-1.1     
+[46] tibble_3.3.1        tidyselect_1.2.1    nlme_3.1-169       
+[49] TMB_1.9.21          compiler_4.6.0     
