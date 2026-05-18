@@ -6,13 +6,16 @@ Each model is prompted to "describe yourself" in 1, 3, 5, or 10 words, under two
 
 ## Status
 
-- **Pilot (Study 1, methods development):** 160 calls completed 2026-05-10. Discarded for confirmatory analysis per prereg §7.
+- **Pilot (Study 1, methods development):** 144 logical calls completed 2026-05-10 (160 rows in `responses_pilot.jsonl` due to one resumed attempt; the parser logs the duplicate `call_id`s). Discarded for confirmatory analysis per prereg §7.
 - **Main study (Study 2):** 1,440 calls completed 2026-05-10. 0 API failures.
 - **Parser:** complete. 1,179 clean / 40 wrapped / 221 malformed (169 of those truncated by Google's reasoning overhead). 5,255 words extracted for primary analysis.
 - **LLM judge:** complete. All 5,255 words coded into 7 categories. 0 judge errors.
 - **Refusal classifier:** complete. 0 refusals; all 221 malformed are genuine non-compliance.
 - **Hand-coded validation (prereg §5.1):** complete (2026-05-15). 154-tuple stratified sample hand-coded by the first author, blind to judge codes. Overall κ = 0.673 (substantial, above the 0.60 threshold); judge codes accepted as primary per prereg §5.1. A pre-specified sensitivity analysis (the boundary-disputed-word swap deviation) produced `study1_analysis/data/coded_main_sensitivity.csv`.
-- **Statistical analysis (prereg §6):** TODO. Will be run against both `coded_main.csv` (primary) and `coded_main_sensitivity.csv` (sensitivity).
+- **Primary statistical analysis (prereg §6.2):** complete. Five primary tests (H1-PRO, H1-IDM, H2-IDM, H3-IDM, H4-compliance) plus the separately-corrected H2-AFF, run against both `coded_main.csv` and `coded_main_sensitivity.csv` by `study1_analysis/notebooks/01_primary.R`. Results in `study1_analysis/notebooks/output/primary_results.csv`. Four of the five Bonferroni-grouped tests clear α = .01 in both datasets; H4 fails as a family-level effect (the descriptive prediction holds at the model level); H2-AFF flips sign between datasets and is not claimed.
+- **§8 Sonnet-as-judge sensitivity:** complete. `study1_analysis/notebooks/04_sonnet_sensitivity.R` re-runs the five category tests after dropping the 760 rows where the subject model is the judge (`claude-sonnet-4-6`). H1-PRO, H1-IDM, H3-IDM survive cleanly; H2-IDM is unestimable on this sub-dataset due to complete separation in the within-Anthropic reference cell. Results in `study1_analysis/notebooks/output/sonnet_sensitivity_results.csv`.
+- **Secondary analyses (prereg §6.3) and figures:** TODO. To live in `02_descriptives.Rmd`.
+- **Writeup:** draft in `papers/three_families_few_words_v2.md`; companion essay on model-collaborative authorship in `papers/raccoon_and_goggles_v1_draft3.md`.
 - **Preregistration:** [`study1/prereg/prereg.md`](study1/prereg/prereg.md). OSF link: [TODO add after posting].
 
 ## Repository structure
@@ -31,7 +34,9 @@ The repo is split into two top-level halves:
     ├── judge/                      # LLM judge + refusal classifier.
     ├── coding_tool/                # Hand-coding HTML + κ scoring + sensitivity-swap script.
     ├── data/                       # Outputs of parser, judge, and coding tool (flat layout).
-    └── (TODO) notebooks/           # Mixed-effects regressions and figures.
+    └── notebooks/                  # 01_primary.R (locked confirmatory), 04_sonnet_sensitivity.R
+                                    # (§8 prereg-committed), variance-components + diagnostics,
+                                    # and 02_descriptives.Rmd (TODO) for §6.3 + figures.
 ```
 
 The split is intentional: `study1/` is a snapshot of what was preregistered and the data it produced; `study1_analysis/` is the working space for everything we do *to* that data. Reviewers can audit prereg compliance by looking only at `study1/`; nothing inside `study1_analysis/` modifies anything inside `study1/`.
@@ -58,7 +63,14 @@ Each folder has its own README with the details for that stage.
    python code.py --dry-run --refusal-too --limit 10   # sanity check first
    python code.py --run main                            # full coding
    ```
-5. Statistical analysis: TODO.
+5. Statistical analysis (requires R ≥ 4.0 with `glmmTMB`, `lme4`, `broom.mixed`, `readr`, `dplyr`, `tidyr` — see `study1_analysis/notebooks/_setup.R`):
+   ```powershell
+   cd ..\notebooks
+   Rscript 01_primary.R           # five primary tests on both datasets
+   Rscript 04_sonnet_sensitivity.R  # §8 prereg-committed sensitivity (drops judge-as-subject rows)
+   Rscript 02_variance_components.R # extracts RE variance components from the saved fits
+   ```
+   Results land in `study1_analysis/notebooks/output/`.
 
 ## Reproducing the data collection from scratch
 
