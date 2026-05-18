@@ -114,6 +114,31 @@ cat("  sensitivity     :", nrow(sensitivity_df), "words\n\n")
 
 FIXED_LENGTH_CAT <- "family * framing + family * n_fac"
 
+#' Guarded wrapper around lrt() that catches the negative-chi² case.
+#' When glmmTMB (or lme4) lands the full and reduced fits at different local
+#' optima with extreme sparsity, the LRT statistic 2(ll_full - ll_reduced) can
+#' come back negative — a mathematical impossibility under correct convergence.
+#' We treat any negative chi² as an unestimable test rather than reporting a
+#' meaningless number. The original (negative) chi² and both log-likelihoods
+#' are preserved in the note for auditability.
+lrt_guarded <- function(full_fit, reduced_fit, label = NA_character_) {
+  out <- lrt(full_fit, reduced_fit)
+  if (!is.na(out$chi2) && out$chi2 < 0) {
+    audit <- sprintf(
+      "NEGATIVE LRT chi2 = %.4f (ll_full = %.4f, ll_reduced = %.4f) — full and reduced fits did not converge to the same optimum; treated as unestimable.",
+      out$chi2, out$logLik_full, out$logLik_reduced
+    )
+    cat("  *** ", if (!is.na(label)) paste0("[", label, "] ", "") else "",
+        audit, "\n", sep = "")
+    out$chi2          <- NA_real_
+    out$p_value       <- NA_real_
+    out$unestimable_note <- audit
+  } else {
+    out$unestimable_note <- NA_character_
+  }
+  out
+}
+
 #' Fit the length-augmented model for one category and run two LRTs.
 #' Returns a list with two `results` rows (length-interaction, length-main)
 #' and the fitted models.
@@ -146,7 +171,10 @@ length_battery_one_cat <- function(df, category, dataset_label) {
   red_inter <- tryCatch(refit_dropping(full, "family:n_fac"),
                         error = function(e) NULL)
   if (!is.null(red_inter)) {
-    test_out <- lrt(full$model, red_inter)
+    test_out <- lrt_guarded(full$model, red_inter,
+                            label = paste0(test_id_inter, "/", dataset_label))
+    note_text <- if (!is.na(test_out$unestimable_note)) test_out$unestimable_note
+                 else "Exploratory (§6.3); α uncorrected"
     results[[test_id_inter]] <- list(
       dataset      = dataset_label,
       test         = test_id_inter,
@@ -161,7 +189,7 @@ length_battery_one_cat <- function(df, category, dataset_label) {
       engine       = full$engine,
       re_structure = full$re_structure,
       warnings     = paste(full$warnings, collapse = " | "),
-      note         = "Exploratory (§6.3); α uncorrected"
+      note         = note_text
     )
   } else {
     results[[test_id_inter]] <- list(
@@ -174,7 +202,10 @@ length_battery_one_cat <- function(df, category, dataset_label) {
   red_main <- tryCatch(refit_dropping(full, c("n_fac", "family:n_fac")),
                        error = function(e) NULL)
   if (!is.null(red_main)) {
-    test_out <- lrt(full$model, red_main)
+    test_out <- lrt_guarded(full$model, red_main,
+                            label = paste0(test_id_main, "/", dataset_label))
+    note_text <- if (!is.na(test_out$unestimable_note)) test_out$unestimable_note
+                 else "Exploratory (§6.3); α uncorrected"
     results[[test_id_main]] <- list(
       dataset      = dataset_label,
       test         = test_id_main,
@@ -189,7 +220,7 @@ length_battery_one_cat <- function(df, category, dataset_label) {
       engine       = full$engine,
       re_structure = full$re_structure,
       warnings     = paste(full$warnings, collapse = " | "),
-      note         = "Exploratory (§6.3); α uncorrected"
+      note         = note_text
     )
   } else {
     results[[test_id_main]] <- list(
@@ -245,7 +276,10 @@ h1_one_cat <- function(df, category, dataset_label) {
     ))
   }
 
-  test_out <- lrt(full$model, red)
+  test_out <- lrt_guarded(full$model, red,
+                          label = paste0(test_id, "/", dataset_label))
+  note_text <- if (!is.na(test_out$unestimable_note)) test_out$unestimable_note
+               else "Exploratory (§6.2 item 1, non-pre-specified category); α uncorrected"
   result_row <- list(
     dataset      = dataset_label,
     test         = test_id,
@@ -260,7 +294,7 @@ h1_one_cat <- function(df, category, dataset_label) {
     engine       = full$engine,
     re_structure = full$re_structure,
     warnings     = paste(full$warnings, collapse = " | "),
-    note         = "Exploratory (§6.2 item 1, non-pre-specified category); α uncorrected"
+    note         = note_text
   )
   list(
     results = setNames(list(result_row), test_id),
