@@ -19,7 +19,12 @@ study1/data/raw/                  parser/         judge/             coding_tool
 
                                                                                   │
                                                                                   ▼
-                                                                         (TODO) notebooks/
+                                                                         notebooks/
+                                                                           01_primary.R
+                                                                           04_sonnet_sensitivity.R
+                                                                           02_variance_components.R
+                                                                           03_h1_pro_diagnostic.R
+                                                                           (02_descriptives.Rmd — TODO)
 ```
 
 Each stage is independent: re-run the parser without re-running the judge; fit a new model in `notebooks/` without re-running anything upstream.
@@ -31,7 +36,7 @@ Each stage is independent: re-run the parser without re-running the judge; fit a
 | `parser/` | JSONL → `clean`/`wrapped`/`malformed` per-call CSV + per-word CSV. | ✅ complete |
 | `judge/` | LLM judge that codes each word into the 7-category scheme. Includes the refusal classifier for malformed rows. | ✅ complete |
 | `coding_tool/` | Standalone HTML interface for the human hand-coding of the validation sample (prereg §5.1). 154 unique `(word, framing, N)` tuples; κ scoring script included. | ✅ tool built; awaiting hand-coding pass |
-| `notebooks/` | Mixed-effects logistic regressions, JS divergence, descriptive plots (prereg §6). | TODO |
+| `notebooks/` | Mixed-effects logistic regressions (prereg §6.2 + §8 sensitivity). Diagnostics, variance components, and the §8 Sonnet-dropped sensitivity. Secondary analyses (§6.3) and figures still to be written in `02_descriptives.Rmd`. | ✅ confirmatory done; descriptives TODO |
 | `data/` | Flat directory holding parser CSVs, judge CSVs, and (later) validation outputs. | populated |
 
 ## Files currently in `data/`
@@ -60,7 +65,7 @@ Proportion of words in each category, broken by family × framing (informational
 | openai | A | 1,060 | 26.3% | 20.0% | 44.1% | 7.9% | 1.5% | 0.0% | 0.2% |
 | openai | B | 897 | 20.0% | 16.7% | 46.7% | 5.4% | 11.1% | 0.0% | 0.1% |
 
-The three families look distinct: Anthropic leans EPI/PRO (curious, helpful, honest, thoughtful), OpenAI leans CAP (concise, adaptable, reliable), Google also leans CAP plus a notable digital/IDM presence. The framing-B shift toward IDM is visible across all three families, consistent with H2. Inferential testing per prereg §6 is the TODO.
+The three families look distinct: Anthropic leans EPI/PRO (curious, helpful, honest, thoughtful), OpenAI leans CAP (concise, adaptable, reliable), Google also leans CAP plus a notable digital/IDM presence. The framing-B shift toward IDM is visible across all three families, consistent with H2. Full inferential testing per prereg §6.2 is complete (see `notebooks/output/primary_results.csv`); §6.3 secondary analyses are the remaining TODO.
 
 Note: Google rows have ~500 words rather than ~1,100 because many Google Pro / Flash trials at N=5 and N=10 truncated under max_tokens before producing a parseable list and were excluded from the primary-analysis dataset. The compliance rate is itself a primary outcome (H4) — see prereg/deviations.
 
@@ -73,8 +78,16 @@ Note: Google rows have ~500 words rather than ~1,100 because many Google Pro / F
 
 ## What's left to do
 
-1. **Statistical analysis (prereg §6, with sensitivity per 2026-05-15 deviation).** Mixed-effects logistic regressions for each category, framing main effect, family × framing interaction, run against both `coded_main.csv` (primary) and `coded_main_sensitivity.csv` (sensitivity). Bonferroni correction at α = .01 for the 5 primary tests.
-2. **Writeup.**
+1. **Secondary analyses (prereg §6.3).** Length effects within category by family, type/token ratios per cell, top-word lists per cell, Jensen-Shannon divergence between framing-A and framing-B distributions per model, and the H1 family-LRT extended to the five non-pre-specified categories (EPI, CAP, AFF, HDG, OTH) as exploratory. To live in `notebooks/02_descriptives.Rmd`.
+2. **Figures for the writeup.**
+3. **Writeup finalisation.** Current draft: `papers/three_families_few_words_v2.md`.
+
+## Completed analyses
+
+- **Primary tests (prereg §6.2).** `notebooks/01_primary.R` against both `coded_main.csv` and `coded_main_sensitivity.csv`. Output: `notebooks/output/primary_results.csv`, `primary_models.rds`, `primary_session.txt`. Four of five Bonferroni-grouped tests clear α = .01 in both datasets. H4 fails as a family-level effect; the descriptive prediction holds at the model level. H2-AFF flips sign between datasets and is not claimed.
+- **§8 Sonnet-as-judge sensitivity.** `notebooks/04_sonnet_sensitivity.R` re-runs the category tests after dropping the 760 rows where Sonnet is the subject. Output: `notebooks/output/sonnet_sensitivity_results.csv`. H1-PRO, H1-IDM, H3-IDM survive; H2-IDM is unestimable on the sub-dataset due to complete separation in the within-Anthropic reference cell (the only Anthropic-A IDM observations come from Sonnet).
+- **Variance components.** `notebooks/02_variance_components.R` extracts RE variances from the saved fits. Output: `notebooks/output/variance_components.txt`. The `trial_id` random intercept estimates to zero in every category model — consistent with the pre-fit forecast in `notebooks/README.md` (most trials produce zero outcome words for any given category).
+- **H1-PRO diagnostic.** `notebooks/03_h1_pro_diagnostic.R` inspects the H1-PRO fit specifically.
 
 ## Completed validation pass
 
